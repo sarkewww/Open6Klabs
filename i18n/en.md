@@ -15,6 +15,7 @@ A local now-playing widget for streamers, with a control panel to customize it.
 - Free / Pro / Discord membership gating
 - Local mock backend with self-hosted realtime (WebSocket + SSE)
 - Control panel with live preview
+- Multiple profiles — each with its own style and a unique widget URL (3 on Free · unlimited on Pro)
 
 ## Usage
 

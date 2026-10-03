@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-const WIDGET_PATH = (import.meta as any).env?.VITE_WIDGET_URL || "/widget/amuse/local";
+const WIDGET_PATH = import.meta.env.VITE_WIDGET_URL || "/widget/amuse/local";
 const AUTH = { authorization: "Bearer local" };
+const FREE_PROFILE_LIMIT = 3;
 
 type Settings = {
   skin: string;
@@ -20,6 +21,17 @@ type Settings = {
   show_animation: string;
   hide_animation: string;
   is_demo: boolean;
+};
+
+type Profile = {
+  _id: string;
+  user_id: string;
+  profile_id: string;
+  name: string;
+  music_service: string;
+  settings: Settings;
+  created_at: string;
+  updated_at: string;
 };
 
 const DEFAULTS: Settings = {
@@ -70,15 +82,44 @@ const FONTS = [
 const SHOW = ["default_in", "fade_in", "slide_in_left", "slide_in_right", "slide_in_top", "slide_in_bottom", "grow_in", "shrink_in", "swing_rotate_in_left", "swing_rotate_in_right", "tilt_in_right", "tilt_in_left"];
 const HIDE = ["default_out", "fade_out", "slide_out_left", "slide_out_right", "slide_out_top", "slide_out_bottom", "grow_out", "shrink_out", "swing_rotate_out_left", "swing_rotate_out_right", "tilt_out_right", "tilt_out_left"];
 
+const inputClass = "rounded-lg border border-line bg-black/40 p-2 text-sm text-white";
+const chipAction = "shrink-0 whitespace-nowrap rounded-md border border-line px-2 py-0.5 text-[10px] font-semibold text-white/60 transition hover:border-white/30 hover:text-white";
+const primaryBtn = "rounded-lg border border-white/60 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white transition hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40";
+const ghostBtn = "rounded-lg border border-line px-3 py-1.5 text-xs font-semibold text-white/70 transition hover:border-white/30 disabled:cursor-not-allowed disabled:opacity-40";
+
 export function App() {
   const [settings, setSettings] = useState<Settings>(DEFAULTS);
+  const [profiles, setProfiles] = useState<Profile[]>([]);
+  const [currentProfileId, setCurrentProfileId] = useState("main");
+  const [profilesError, setProfilesError] = useState("");
   const [tier, setTier] = useState<string>("free");
   const [status, setStatus] = useState<string>("inactive");
   const [discordMember, setDiscordMember] = useState(false);
   const [saved, setSaved] = useState<"idle" | "saving" | "saved">("idle");
+
+  const [creating, setCreating] = useState(false);
+  const [newName, setNewName] = useState("");
+  const [addBusy, setAddBusy] = useState(false);
+  const [addError, setAddError] = useState("");
+
+  const [renamingId, setRenamingId] = useState<string | null>(null);
+  const [renameValue, setRenameValue] = useState("");
+  const [renameBusy, setRenameBusy] = useState(false);
+  const [renameError, setRenameError] = useState("");
+
+  const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [deleteBusy, setDeleteBusy] = useState(false);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
   const iframe = useRef<HTMLIFrameElement>(null);
+  const loadedProfileRef = useRef<string | null>(null);
+  const settingsRef = useRef<Settings>(DEFAULTS);
+
   const active = status === "active";
+  const subscribed = status === "active" && tier !== "free";
   const plan = active ? (tier === "supporter" ? "DISCORD" : tier.toUpperCase()) : "FREE";
+  const freeAtLimit = !subscribed && profiles.length >= FREE_PROFILE_LIMIT;
+  const currentProfile = profiles.find((p) => p.profile_id === currentProfileId);
 
   const loadSub = () =>
     Promise.all([
@@ -86,25 +127,40 @@ export function App() {
       fetch("/api/users", { headers: AUTH }).then((r) => r.json()),
     ])
       .then(([s, u]) => {
-        setTier(s.tier || "free");
-        setStatus(s.status || "inactive");
+        setTier(s?.tier || "free");
+        setStatus(s?.status || "inactive");
         setDiscordMember(!!u?.is_discord_member);
       })
       .catch(() => {});
 
   useEffect(() => {
-    fetch("/api/widgets/amuse/profiles/main", { headers: AUTH })
+    fetch("/api/widgets/amuse/profiles", { headers: AUTH })
       .then((r) => r.json())
-      .then((p) => p?.settings && setSettings({ ...DEFAULTS, ...p.settings }))
-      .catch(() => {});
+      .then((list) => {
+        if (Array.isArray(list)) setProfiles(list as Profile[]);
+      })
+      .catch(() => setProfilesError("Failed to load profiles"));
     loadSub();
   }, []);
+
+  // Load the selected profile's settings from the list response (no extra GET).
+  useEffect(() => {
+    if (loadedProfileRef.current === currentProfileId) return;
+    const p = profiles.find((x) => x.profile_id === currentProfileId);
+    if (!p) return;
+    loadedProfileRef.current = currentProfileId;
+    setSettings({ ...DEFAULTS, ...p.settings });
+  }, [currentProfileId, profiles]);
+
+  useEffect(() => {
+    settingsRef.current = settings;
+  }, [settings]);
 
   const save = useCallback(
     (next: Settings) => {
       setSaved("saving");
-      fetch("/api/widgets/amuse/profiles/main", {
-        method: "PUT",
+      fetch(`/api/widgets/amuse/profiles/${currentProfileId}`, {
+        method: "PATCH",
         headers: { ...AUTH, "content-type": "application/json" },
         body: JSON.stringify({ settings: next }),
       })
@@ -114,15 +170,14 @@ export function App() {
         })
         .catch(() => setSaved("idle"));
     },
-    []
+    [currentProfileId]
   );
 
   const update = <K extends keyof Settings>(k: K, v: Settings[K]) => {
-    setSettings((s) => {
-      const next = { ...s, [k]: v };
-      save(next);
-      return next;
-    });
+    const next = { ...settingsRef.current, [k]: v };
+    settingsRef.current = next;
+    setSettings(next);
+    save(next);
   };
 
   const locked = (skin: (typeof SKINS)[number]) => {
@@ -132,14 +187,98 @@ export function App() {
     return false;
   };
 
-  const overlayUrl = new URL(WIDGET_PATH, window.location.origin).href;
+  const createProfile = () => {
+    const name = newName.trim();
+    if (!name) {
+      setAddError("Profile name cannot be empty");
+      return;
+    }
+    setAddBusy(true);
+    setAddError("");
+    fetch("/api/widgets/amuse/profiles", {
+      method: "POST",
+      headers: { ...AUTH, "content-type": "application/json" },
+      body: JSON.stringify({ name }),
+    })
+      .then(async (r) => {
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok) {
+          setAddError(data?.error || "Failed to create profile");
+          return;
+        }
+        const created = data as Profile;
+        setProfiles((ps) => [...ps, created]);
+        setCurrentProfileId(created.profile_id);
+        setCreating(false);
+        setNewName("");
+      })
+      .catch(() => setAddError("Failed to create profile"))
+      .finally(() => setAddBusy(false));
+  };
+
+  const renameProfile = (id: string) => {
+    const name = renameValue.trim();
+    if (!name) {
+      setRenameError("Profile name cannot be empty");
+      return;
+    }
+    setRenameBusy(true);
+    setRenameError("");
+    fetch(`/api/widgets/amuse/profiles/${id}`, {
+      method: "PATCH",
+      headers: { ...AUTH, "content-type": "application/json" },
+      body: JSON.stringify({ name }),
+    })
+      .then(async (r) => {
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok) {
+          setRenameError(data?.error || "Failed to rename profile");
+          return;
+        }
+        const updated = data as Profile;
+        setProfiles((ps) => ps.map((p) => (p.profile_id === id ? updated : p)));
+        setRenamingId(null);
+        setRenameValue("");
+      })
+      .catch(() => setRenameError("Failed to rename profile"))
+      .finally(() => setRenameBusy(false));
+  };
+
+  const deleteProfile = (id: string) => {
+    setDeleteBusy(true);
+    setProfilesError("");
+    fetch(`/api/widgets/amuse/profiles/${id}`, { method: "DELETE", headers: AUTH })
+      .then(async (r) => {
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok) {
+          setProfilesError(data?.error || "Failed to delete profile");
+          return;
+        }
+        setProfiles((ps) => ps.filter((p) => p.profile_id !== id));
+        if (currentProfileId === id) setCurrentProfileId("main");
+        setDeleteId(null);
+      })
+      .catch(() => setProfilesError("Failed to delete profile"))
+      .finally(() => setDeleteBusy(false));
+  };
+
+  const copyProfileId = (id: string) => {
+    navigator.clipboard?.writeText(id);
+    setCopiedId(id);
+    setTimeout(() => setCopiedId((c) => (c === id ? null : c)), 1200);
+  };
+
+  const overlayUrl = new URL(
+    WIDGET_PATH + (currentProfileId !== "main" ? "/" + currentProfileId : ""),
+    window.location.origin
+  ).href;
 
   const card = "rounded-2xl border border-line bg-card p-5";
   const sectionTitle = "mb-3 font-poppins text-sm uppercase tracking-widest text-white/50";
 
   return (
     <div className="min-h-screen bg-ink font-poppins">
-      <div className="mx-auto flex max-w-7xl gap-8 p-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 p-8 lg:flex-row">
         <main className="min-w-0 flex-1">
           <header className="mb-8 flex items-center justify-between">
             <div>
@@ -161,8 +300,153 @@ export function App() {
           </header>
 
           <section className={`${card} mb-6`}>
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+              <h2 className="font-poppins text-sm uppercase tracking-widest text-white/50">Profiles</h2>
+              <div className="flex items-center gap-3">
+                {freeAtLimit && (
+                  <span data-profile-hint className="text-[11px] text-white/40">
+                    Free plan: up to 3 profiles. Upgrade for unlimited.
+                  </span>
+                )}
+                <button
+                  data-add-profile
+                  disabled={creating || freeAtLimit}
+                  onClick={() => {
+                    setCreating(true);
+                    setNewName("");
+                    setAddError("");
+                  }}
+                  className={primaryBtn}
+                >
+                  Add Profile
+                </button>
+              </div>
+            </div>
+
+            {profilesError && (
+              <p data-profiles-error className="mb-3 text-xs text-red-400">
+                {profilesError}
+              </p>
+            )}
+
+            <div className="flex flex-wrap gap-2">
+              {profiles.map((p) => {
+                const isMain = p.profile_id === "main";
+                const selected = p.profile_id === currentProfileId;
+                return (
+                  <div
+                    key={p.profile_id}
+                    className={`flex items-center gap-2 rounded-xl border px-3 py-2 transition ${
+                      selected ? "border-white/80 bg-white/10" : "border-line"
+                    }`}
+                  >
+                    <button data-profile={p.profile_id} onClick={() => setCurrentProfileId(p.profile_id)} className="min-w-0 text-left">
+                      <span className="block truncate text-sm font-semibold text-white">{p.name}</span>
+                      <span className="block text-[10px] uppercase tracking-wider text-white/60">{p.profile_id}</span>
+                    </button>
+                    {isMain && (
+                      <span className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-bold text-white/70">Default</span>
+                    )}
+                    {!isMain && (
+                      <div className="flex shrink-0 items-center gap-1">
+                        <button data-copy-id onClick={() => copyProfileId(p.profile_id)} className={chipAction}>
+                          {copiedId === p.profile_id ? "Copied!" : "Copy ID"}
+                        </button>
+                        <button
+                          data-edit-profile
+                          onClick={() => {
+                            setRenamingId(p.profile_id);
+                            setRenameValue(p.name);
+                            setRenameError("");
+                          }}
+                          className={chipAction}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          data-delete-profile
+                          onClick={() => {
+                            setDeleteId(p.profile_id);
+                            setProfilesError("");
+                          }}
+                          className={chipAction}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+              {profiles.length === 0 && !profilesError && <span className="text-xs text-white/40">Loading profiles…</span>}
+            </div>
+
+            {creating && (
+              <div className="mt-3 flex flex-wrap items-center gap-2 rounded-xl border border-line p-3">
+                <input
+                  data-new-profile-name
+                  autoFocus
+                  value={newName}
+                  maxLength={30}
+                  placeholder="New profile name"
+                  onChange={(e) => {
+                    setNewName(e.target.value);
+                    setAddError("");
+                  }}
+                  className={inputClass}
+                />
+                <button onClick={createProfile} disabled={addBusy} className={primaryBtn}>
+                  {addBusy ? "Adding…" : "Create"}
+                </button>
+                <button onClick={() => setCreating(false)} className={ghostBtn}>
+                  Cancel
+                </button>
+                {addError && <span className="text-xs text-red-400">{addError}</span>}
+              </div>
+            )}
+
+            {renamingId && (
+              <div className="mt-3 flex flex-wrap items-center gap-2 rounded-xl border border-line p-3">
+                <input
+                  data-rename-input
+                  autoFocus
+                  value={renameValue}
+                  maxLength={30}
+                  placeholder="Profile name"
+                  onChange={(e) => {
+                    setRenameValue(e.target.value);
+                    setRenameError("");
+                  }}
+                  className={inputClass}
+                />
+                <button onClick={() => renameProfile(renamingId)} disabled={renameBusy} className={primaryBtn}>
+                  {renameBusy ? "Saving…" : "Save"}
+                </button>
+                <button onClick={() => setRenamingId(null)} className={ghostBtn}>
+                  Cancel
+                </button>
+                {renameError && <span className="text-xs text-red-400">{renameError}</span>}
+              </div>
+            )}
+
+            {deleteId && (
+              <div className="mt-3 flex flex-wrap items-center gap-2 rounded-xl border border-line p-3">
+                <span className="text-xs text-white/70">
+                  Delete “{profiles.find((p) => p.profile_id === deleteId)?.name ?? deleteId}”? This cannot be undone.
+                </span>
+                <button onClick={() => deleteProfile(deleteId)} disabled={deleteBusy} className={primaryBtn}>
+                  {deleteBusy ? "Deleting…" : "Delete"}
+                </button>
+                <button onClick={() => setDeleteId(null)} className={ghostBtn}>
+                  Cancel
+                </button>
+              </div>
+            )}
+          </section>
+
+          <section className={`${card} mb-6`}>
             <h2 className={sectionTitle}>Skin</h2>
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
               {SKINS.map((skin) => {
                 const isLocked = locked(skin);
                 const selected = settings.skin === skin.id;
@@ -299,22 +583,28 @@ export function App() {
           </div>
         </main>
 
-        <aside className="sticky top-8 h-fit w-[480px] shrink-0">
+        <aside className="h-fit w-full lg:sticky lg:top-8 lg:w-[480px] lg:shrink-0">
           <div className={`${card} flex flex-col items-center gap-4`}>
             <div className="flex w-full items-center justify-between">
               <span className="text-xs font-semibold uppercase tracking-widest text-white/50">Live preview</span>
-              <span data-save-state className="text-xs text-white/40">
+              <span data-save-state className="text-xs text-white/60">
                 {saved === "saving" ? "saving…" : saved === "saved" ? "saved" : "synced"}
               </span>
             </div>
             <div className="flex h-[420px] w-full items-center justify-center overflow-hidden rounded-xl bg-[#0e0e0e]">
-              <iframe ref={iframe} title="Amuse widget" src={WIDGET_PATH} className="h-[420px] w-full border-0" />
+              <iframe
+                key={currentProfileId}
+                ref={iframe}
+                title="Amuse widget"
+                src={overlayUrl}
+                className="h-[420px] w-full border-0"
+              />
             </div>
             <div data-preview-state className="w-full break-all text-center text-[11px] text-white/40">
-              skin={settings.skin} · cover={settings.cover} · theme={settings.theme} · font={settings.font}
+              profile={currentProfile?.name ?? currentProfileId} ({currentProfileId}) · skin={settings.skin} · cover={settings.cover} · theme={settings.theme} · font={settings.font}
             </div>
           </div>
-          <p className="mt-3 text-center text-[11px] text-white/30">
+          <p className="mt-3 text-center text-[11px] text-white/50">
             Local reproduction · widget served at <code className="text-white/50">{overlayUrl}</code>
           </p>
         </aside>

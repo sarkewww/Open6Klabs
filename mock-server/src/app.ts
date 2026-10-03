@@ -65,7 +65,7 @@ export function createApp() {
   const sessions = new Map<string, string>(); // session token -> user id
   const widgetTokens = new Map<string, string>(); // widget token -> user id
   const subs = new Map<string, Subscription>();
-  const profiles = new Map<string, any>();
+  const profiles = new Map<string, Map<string, any>>();
   const adapters = createAdapters();
   const eventSubs = new Set<(event: string, data: unknown) => void>();
 
@@ -99,16 +99,24 @@ export function createApp() {
     users.set(id, user);
     widgetTokens.set(widget_token, id);
     subs.set(id, { status: "active", tier: "pro", current_period_end: null, cancel_at_period_end: false });
-    profiles.set(id, {
-      _id: newId("profile"),
-      user_id: id,
-      profile_id: "main",
-      name: "Main",
-      music_service: "pear-desktop",
-      settings: { ...DEFAULT_SETTINGS },
-      created_at: now(),
-      updated_at: now(),
-    });
+    profiles.set(
+      id,
+      new Map([
+        [
+          "main",
+          {
+            _id: newId("profile"),
+            user_id: id,
+            profile_id: "main",
+            name: "Main",
+            music_service: "pear-desktop",
+            settings: { ...DEFAULT_SETTINGS },
+            created_at: now(),
+            updated_at: now(),
+          },
+        ],
+      ])
+    );
     return user;
   }
 
@@ -131,6 +139,29 @@ export function createApp() {
   function sessionUser(c: any) {
     const cookie = getCookie(c, "amuse.session_token");
     return cookie && sessions.has(cookie) ? users.get(sessions.get(cookie)!) : null;
+  }
+
+  const isSubscribed = (sub: Subscription) => sub.status === "active" && sub.tier !== "free";
+  function userProfiles(userId: string) {
+    let map = profiles.get(userId);
+    if (!map) {
+      map = new Map<string, any>();
+      profiles.set(userId, map);
+    }
+    return map;
+  }
+  const profileIndex = (map: Map<string, any>, id: string) => [...map.keys()].indexOf(id);
+  function randomProfileId(map: Map<string, any>) {
+    const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    let id = "";
+    do {
+      id = Array.from({ length: 10 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+    } while (map.has(id));
+    return id;
+  }
+  function notifyProfileChange(user: any, profileId: string, profile: any) {
+    for (const sub of eventSubs) sub("profile-changed", { profile_id: profileId, profile });
+    broadcast("user_changed_settings", { profile_id: profileId, profile }, `private-amuse-${user.widget_token}`);
   }
 
   const app = new Hono();
@@ -219,26 +250,85 @@ export function createApp() {
   app.get("/api/widgets/amuse/profiles", (c) => {
     const u = sessionUser(c) || authUser(c);
     if (!u) return c.json({ error: "unauthorized" }, 401);
-    return c.json([profiles.get(u.id)]);
+    const list = [...userProfiles(u.id).values()];
+    list.sort((a, b) => (a.profile_id === "main" ? -1 : b.profile_id === "main" ? 1 : 0));
+    return c.json(list);
+  });
+  app.post("/api/widgets/amuse/profiles", async (c) => {
+    const u = sessionUser(c) || authUser(c);
+    if (!u) return c.json({ error: "unauthorized" }, 401);
+    const body = await c.req.json().catch(() => ({}));
+    const name = typeof body.name === "string" ? body.name.trim() : "";
+    if (!name) return c.json({ error: "Profile name cannot be empty" }, 400);
+    if (name.length > 30) return c.json({ error: "Profile name is too long" }, 400);
+    const map = userProfiles(u.id);
+    if (!isSubscribed(subs.get(u.id)!) && map.size >= 3) {
+      return c.json({ error: "Upgrade to Pro to get unlimited profiles" }, 403);
+    }
+    const profile = {
+      _id: newId("profile"),
+      user_id: u.id,
+      profile_id: randomProfileId(map),
+      name,
+      music_service: "pear-desktop",
+      settings: { ...DEFAULT_SETTINGS },
+      created_at: now(),
+      updated_at: now(),
+    };
+    map.set(profile.profile_id, profile);
+    notifyProfileChange(u, profile.profile_id, profile);
+    return c.json(profile, 201);
   });
   app.get("/api/widgets/amuse/profiles/:id", (c) => {
     const u = authUser(c);
     if (!u) return c.json({ error: "unauthorized" }, 401);
-    const p = profiles.get(u.id);
-    if (!p || p.profile_id !== c.req.param("id")) return c.json({ error: "not found" }, 404);
+    const map = userProfiles(u.id);
+    const id = c.req.param("id");
+    const p = map.get(id);
+    if (!p) return c.json({ error: "Profile not found" }, 404);
+    if (!isSubscribed(subs.get(u.id)!) && profileIndex(map, id) >= 3) {
+      return c.json({ error: "Upgrade to Pro to get unlimited profiles" }, 403);
+    }
     return c.json(p);
   });
-  app.put("/api/widgets/amuse/profiles/:id", async (c) => {
+  const updateProfile = async (c: any) => {
     const u = sessionUser(c) || authUser(c);
     if (!u) return c.json({ error: "unauthorized" }, 401);
     const body = await c.req.json().catch(() => ({}));
-    const p = profiles.get(u.id);
-    if (!p) return c.json({ error: "not found" }, 404);
-    p.settings = { ...p.settings, ...(body.settings || {}) };
+    const map = userProfiles(u.id);
+    const p = map.get(c.req.param("id"));
+    if (!p) return c.json({ error: "Profile not found" }, 404);
+    if (body.name !== undefined) {
+      const name = typeof body.name === "string" ? body.name.trim() : "";
+      if (!name) return c.json({ error: "Profile name cannot be empty" }, 400);
+      if (name.length > 30) return c.json({ error: "Profile name is too long" }, 400);
+      p.name = name;
+    }
+    if (body.music_service !== undefined) p.music_service = body.music_service;
+    if (body.settings !== undefined) p.settings = { ...p.settings, ...body.settings };
     p.updated_at = now();
-    for (const sub of eventSubs) sub("profile-changed", { profile_id: p.profile_id });
-    broadcast("state-update", { profile_id: p.profile_id });
+    notifyProfileChange(u, p.profile_id, p);
     return c.json(p);
+  };
+  app.patch("/api/widgets/amuse/profiles/:id", updateProfile);
+  app.put("/api/widgets/amuse/profiles/:id", updateProfile);
+  app.delete("/api/widgets/amuse/profiles/:id", (c) => {
+    const u = sessionUser(c) || authUser(c);
+    if (!u) return c.json({ error: "unauthorized" }, 401);
+    const id = c.req.param("id");
+    if (id === "main") return c.json({ error: "Cannot delete the default profile" }, 400);
+    const map = userProfiles(u.id);
+    if (!map.has(id)) return c.json({ error: "Profile not found" }, 404);
+    map.delete(id);
+    notifyProfileChange(u, id, null);
+    return c.json({ ok: true });
+  });
+  app.post("/api/pusher/settings-update", async (c) => {
+    const u = sessionUser(c) || authUser(c);
+    if (!u) return c.json({ error: "unauthorized" }, 401);
+    const body = await c.req.json().catch(() => ({}));
+    notifyProfileChange(u, body.profile_id, body.profile ?? null);
+    return c.json({ ok: true });
   });
 
   // ---- now-playing + sources ----
