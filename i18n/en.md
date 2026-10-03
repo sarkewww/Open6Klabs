@@ -1,10 +1,10 @@
 # Amuse
 
-[English](i18n/en.md) · [简体中文](i18n/zh.md) · [日本語](i18n/ja.md) · [한국어](i18n/ko.md)
+[English](en.md) · [简体中文](zh.md) · [日本語](ja.md) · [한국어](ko.md) · [← Back](../README.md)
 
-![Amuse — control panel](docs/images/panel.png)
+![Amuse — control panel](../docs/images/panel.png)
 
-![Amuse — widget](docs/images/widget.png)
+![Amuse — widget](../docs/images/widget.png)
 
 ## Usage
 
