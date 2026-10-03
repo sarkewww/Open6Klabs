@@ -1,0 +1,1 @@
+import{j as e}from"./main-Dx8nN5Es.js";import{O as i}from"./OAuthRedirect-CgcvvQTn.js";import"./logos-Bg0-Tafc.js";import"./loader-circle-D36RB2I4.js";globalThis.jotaiAtomCache=globalThis.jotaiAtomCache||{cache:new Map,get(t,o){return this.cache.has(t)?this.cache.get(t):(this.cache.set(t,o),o)}};const s=()=>e.jsx(i,{name:"twitch"});export{s as component};

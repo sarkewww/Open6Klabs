@@ -1,0 +1,29 @@
+{
+  "name": "amuse-local-reproduction",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Local Amuse widget + self-written control panel. Research-only, no redistribution.",
+  "scripts": {
+    "mock": "pnpm --dir mock-server dev",
+    "widget": "node widget-server.mjs",
+    "panel": "pnpm --dir panel dev"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "cheerio": "^1.2.0",
+    "esbuild": "^0.28.2",
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.63.0",
+    "pngjs": "^7.0.0",
+    "prettier": "^3.9.9",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3",
+    "zustand": "^5.0.15"
+  }
+}

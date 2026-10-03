@@ -1,0 +1,1 @@
+globalThis.jotaiAtomCache=globalThis.jotaiAtomCache||{cache:new Map,get(e,a){return this.cache.has(e)?this.cache.get(e):(this.cache.set(e,a),a)}};var h=(e=>(e.ACTIVE="active",e.CANCELED="canceled",e.REVOKED="revoked",e.INACTIVE="inactive",e))(h||{}),c=(e=>(e.FREE="free",e.PRO="pro",e.SUPPORTER="supporter",e))(c||{});export{h as S,c as a};

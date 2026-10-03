@@ -1,0 +1,35 @@
+# secrets - NEVER commit
+.secrets/
+.env*
+!.env.example
+
+# deps / build
+node_modules/
+dist/
+app/dist/
+.vite/
+coverage/
+*.tsbuildinfo
+
+# logs / temp
+*.log
+npm-debug.log*
+capture/failed.json
+capture/_tmp/
+
+# os
+.DS_Store
+Thumbs.db
+
+# playwright
+test-results/
+playwright-report/
+
+# tooling index
+.codegraph/
+
+# agent work state
+.omo/
+
+# temp beautify scratch
+.omo/_beautify/

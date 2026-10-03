@@ -1,0 +1,1 @@
+import{K as r,j as a}from"./main-Dx8nN5Es.js";globalThis.jotaiAtomCache=globalThis.jotaiAtomCache||{cache:new Map,get(t,e){return this.cache.has(t)?this.cache.get(t):(this.cache.set(t,e),e)}};function s({name:t,children:e}){return r[t]?a.jsx(a.Fragment,{children:e}):null}export{s as F};

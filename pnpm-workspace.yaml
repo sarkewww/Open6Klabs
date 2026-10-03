@@ -1,0 +1,5 @@
+packages:
+  - "panel"
+  - "mock-server"
+allowBuilds:
+  esbuild: true
