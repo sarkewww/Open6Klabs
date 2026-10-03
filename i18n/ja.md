@@ -20,10 +20,7 @@
 
 ```bash
 pnpm install
-
-pnpm mock     # バックエンド -> http://localhost:8787
-pnpm widget   # ウィジェット -> http://localhost:5199/widget/amuse/local
-pnpm panel    # パネル -> http://localhost:5174
+pnpm dev      # mock :8787 · widget :5199 · panel :5174
 ```
 
 - コントロールパネル: <http://localhost:5174>

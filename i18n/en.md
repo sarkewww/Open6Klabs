@@ -20,10 +20,7 @@ A local now-playing widget for streamers, with a control panel to customize it.
 
 ```bash
 pnpm install
-
-pnpm mock     # backend -> http://localhost:8787
-pnpm widget   # widget  -> http://localhost:5199/widget/amuse/local
-pnpm panel    # panel   -> http://localhost:5174
+pnpm dev      # mock :8787 · widget :5199 · panel :5174
 ```
 
 - Panel: <http://localhost:5174>

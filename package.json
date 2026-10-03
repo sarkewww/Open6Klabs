@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Local Amuse widget + self-written control panel. Research-only, no redistribution.",
   "scripts": {
+    "dev": "node dev.mjs",
     "mock": "pnpm --dir mock-server dev",
     "widget": "node widget-server.mjs",
     "panel": "pnpm --dir panel dev"
