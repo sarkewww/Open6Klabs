@@ -69,7 +69,8 @@ const server = http.createServer((req, res) => {
   if (/^\/(assets|webfonts|css)\//.test(p) || ["/favicon.ico", "/manifest.webmanifest", "/6k_logo_white_ico.svg", "/masked-icon.svg", "/apple-touch-icon.png"].includes(p)) {
     return serveStatic(res, p.slice(1));
   }
-  if (/\.[a-z0-9]+$/i.test(p)) {
+  // widget routes (incl. profile ids that may contain dots) are always HTML
+  if (!p.startsWith("/widget/") && /\.[a-z0-9]+$/i.test(p)) {
     res.writeHead(404);
     res.end("not found");
     return;

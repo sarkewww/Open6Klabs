@@ -237,6 +237,11 @@ export function App() {
         }
         const updated = data as Profile;
         setProfiles((ps) => ps.map((p) => (p.profile_id === id ? updated : p)));
+        if (currentProfileId === id) {
+          // profile_id may now equal the new name; follow it so preview/URL/selection stay in sync
+          loadedProfileRef.current = updated.profile_id;
+          setCurrentProfileId(updated.profile_id);
+        }
         setRenamingId(null);
         setRenameValue("");
       })

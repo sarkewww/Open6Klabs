@@ -151,13 +151,24 @@ export function createApp() {
     return map;
   }
   const profileIndex = (map: Map<string, any>, id: string) => [...map.keys()].indexOf(id);
-  function randomProfileId(map: Map<string, any>) {
-    const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-    let id = "";
-    do {
-      id = Array.from({ length: 10 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
-    } while (map.has(id));
-    return id;
+  function uniqueProfileId(map: Map<string, any>, base: string, excludeId?: string) {
+    const free = (candidate: string) => !map.has(candidate) || candidate === excludeId;
+    if (free(base)) return base;
+    let n = 2;
+    while (!free(`${base}-${n}`)) n++;
+    return `${base}-${n}`;
+  }
+  const INVALID_NAME_CHARS = /[/\\?#%]/;
+  function validateName(raw: unknown): { name?: string; error?: string } {
+    const name = typeof raw === "string" ? raw.trim() : "";
+    if (!name) return { error: "Profile name cannot be empty" };
+    if (name.length > 30) return { error: "Profile name is too long" };
+    const hasControl = [...name].some((ch) => {
+      const cp = ch.codePointAt(0)!;
+      return cp < 0x20 || cp === 0x7f;
+    });
+    if (INVALID_NAME_CHARS.test(name) || hasControl) return { error: "Profile name contains unsupported characters" };
+    return { name };
   }
   function notifyProfileChange(user: any, profileId: string, profile: any) {
     for (const sub of eventSubs) sub("profile-changed", { profile_id: profileId, profile });
@@ -258,17 +269,17 @@ export function createApp() {
     const u = sessionUser(c) || authUser(c);
     if (!u) return c.json({ error: "unauthorized" }, 401);
     const body = await c.req.json().catch(() => ({}));
-    const name = typeof body.name === "string" ? body.name.trim() : "";
-    if (!name) return c.json({ error: "Profile name cannot be empty" }, 400);
-    if (name.length > 30) return c.json({ error: "Profile name is too long" }, 400);
+    const v = validateName(body.name);
+    if (v.error) return c.json({ error: v.error }, 400);
     const map = userProfiles(u.id);
     if (!isSubscribed(subs.get(u.id)!) && map.size >= 3) {
       return c.json({ error: "Upgrade to Pro to get unlimited profiles" }, 403);
     }
+    const name = v.name!;
     const profile = {
       _id: newId("profile"),
       user_id: u.id,
-      profile_id: randomProfileId(map),
+      profile_id: uniqueProfileId(map, name),
       name,
       music_service: "pear-desktop",
       settings: { ...DEFAULT_SETTINGS },
@@ -296,13 +307,22 @@ export function createApp() {
     if (!u) return c.json({ error: "unauthorized" }, 401);
     const body = await c.req.json().catch(() => ({}));
     const map = userProfiles(u.id);
-    const p = map.get(c.req.param("id"));
+    const currentId = c.req.param("id");
+    const p = map.get(currentId);
     if (!p) return c.json({ error: "Profile not found" }, 404);
     if (body.name !== undefined) {
-      const name = typeof body.name === "string" ? body.name.trim() : "";
-      if (!name) return c.json({ error: "Profile name cannot be empty" }, 400);
-      if (name.length > 30) return c.json({ error: "Profile name is too long" }, 400);
-      p.name = name;
+      const v = validateName(body.name);
+      if (v.error) return c.json({ error: v.error }, 400);
+      p.name = v.name!;
+      if (currentId !== "main") {
+        const nextId = uniqueProfileId(map, p.name, currentId);
+        if (nextId !== currentId) {
+          const entries = [...map.entries()].map(([k, val]): [string, any] => (k === currentId ? [nextId, val] : [k, val]));
+          map.clear();
+          for (const [k, val] of entries) map.set(k, val);
+          p.profile_id = nextId;
+        }
+      }
     }
     if (body.music_service !== undefined) p.music_service = body.music_service;
     if (body.settings !== undefined) p.settings = { ...p.settings, ...body.settings };

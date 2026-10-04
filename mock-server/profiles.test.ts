@@ -35,7 +35,7 @@ function jsonHeaders(cookie: string) {
 }
 
 describe("mock widget profiles (multi-profile)", () => {
-  it("S1 create/list/get: main seeded, create Party, list keeps main first", async () => {
+  it("S1 create/list/get: profile_id equals the name, main seeded first", async () => {
     const app = createApp();
     const cookie = await signedIn(app);
 
@@ -53,8 +53,7 @@ describe("mock widget profiles (multi-profile)", () => {
     });
     expect(created.status).toBe(201);
     const party = (await created.json()) as Profile;
-    expect(party.profile_id).toBeTruthy();
-    expect(party.profile_id).not.toBe("main");
+    expect(party.profile_id).toBe("Party");
     expect(party.name).toBe("Party");
 
     const list = (await (
@@ -62,10 +61,10 @@ describe("mock widget profiles (multi-profile)", () => {
     ).json()) as Profile[];
     expect(list.length).toBe(2);
     expect(list[0].profile_id).toBe("main");
-    expect(list[1].profile_id).toBe(party.profile_id);
+    expect(list[1].profile_id).toBe("Party");
 
     const wt = await widgetToken(app, cookie);
-    const got = await app.request(`/api/widgets/amuse/profiles/${party.profile_id}`, {
+    const got = await app.request("/api/widgets/amuse/profiles/Party", {
       headers: { authorization: `Bearer ${wt}` },
     });
     expect(got.status).toBe(200);
@@ -77,15 +76,13 @@ describe("mock widget profiles (multi-profile)", () => {
     const cookie = await signedIn(app);
     const wt = await widgetToken(app, cookie);
 
-    const created = (await (
-      await app.request("/api/widgets/amuse/profiles", {
-        method: "POST",
-        headers: jsonHeaders(cookie),
-        body: JSON.stringify({ name: "Party" }),
-      })
-    ).json()) as Profile;
+    await app.request("/api/widgets/amuse/profiles", {
+      method: "POST",
+      headers: jsonHeaders(cookie),
+      body: JSON.stringify({ name: "Party" }),
+    });
 
-    const patched = await app.request(`/api/widgets/amuse/profiles/${created.profile_id}`, {
+    const patched = await app.request("/api/widgets/amuse/profiles/Party", {
       method: "PATCH",
       headers: jsonHeaders(cookie),
       body: JSON.stringify({ settings: { skin: "discord" } }),
@@ -98,7 +95,7 @@ describe("mock widget profiles (multi-profile)", () => {
     expect(main.settings.skin).toBe("boxy");
 
     const party = (await (
-      await app.request(`/api/widgets/amuse/profiles/${created.profile_id}`, {
+      await app.request("/api/widgets/amuse/profiles/Party", {
         headers: { authorization: `Bearer ${wt}` },
       })
     ).json()) as Profile;
@@ -117,15 +114,13 @@ describe("mock widget profiles (multi-profile)", () => {
     expect(delMain.status).toBe(400);
     expect(((await delMain.json()) as { error: string }).error).toBe("Cannot delete the default profile");
 
-    const created = (await (
-      await app.request("/api/widgets/amuse/profiles", {
-        method: "POST",
-        headers: jsonHeaders(cookie),
-        body: JSON.stringify({ name: "Party" }),
-      })
-    ).json()) as Profile;
+    await app.request("/api/widgets/amuse/profiles", {
+      method: "POST",
+      headers: jsonHeaders(cookie),
+      body: JSON.stringify({ name: "Party" }),
+    });
 
-    const delParty = await app.request(`/api/widgets/amuse/profiles/${created.profile_id}`, {
+    const delParty = await app.request("/api/widgets/amuse/profiles/Party", {
       method: "DELETE",
       headers: { cookie },
     });
@@ -137,7 +132,7 @@ describe("mock widget profiles (multi-profile)", () => {
     ).json()) as Profile[];
     expect(list.length).toBe(1);
 
-    const gone = await app.request(`/api/widgets/amuse/profiles/${created.profile_id}`, {
+    const gone = await app.request("/api/widgets/amuse/profiles/Party", {
       headers: { authorization: `Bearer ${wt}` },
     });
     expect(gone.status).toBe(404);
@@ -186,7 +181,7 @@ describe("mock widget profiles (multi-profile)", () => {
     expect(await res.json()).toEqual({ error: "Profile not found" });
   });
 
-  it("S6 validation: empty and too-long names rejected", async () => {
+  it("S6 validation: empty, too-long and unsupported names rejected", async () => {
     const app = createApp();
     const cookie = await signedIn(app);
 
@@ -205,6 +200,14 @@ describe("mock widget profiles (multi-profile)", () => {
     });
     expect(long.status).toBe(400);
     expect(((await long.json()) as { error: string }).error).toBe("Profile name is too long");
+
+    const bad = await app.request("/api/widgets/amuse/profiles", {
+      method: "POST",
+      headers: jsonHeaders(cookie),
+      body: JSON.stringify({ name: "a/b" }),
+    });
+    expect(bad.status).toBe(400);
+    expect(((await bad.json()) as { error: string }).error).toBe("Profile name contains unsupported characters");
   });
 
   it("S7 regression: main settings merge, PUT alias, rename keeps profile_id", async () => {
@@ -243,5 +246,86 @@ describe("mock widget profiles (multi-profile)", () => {
     const renamedBody = (await renamed.json()) as Profile;
     expect(renamedBody.name).toBe("Renamed");
     expect(renamedBody.profile_id).toBe("main");
+  });
+
+  it("S8 duplicate names auto-suffix with -2, -3", async () => {
+    const app = createApp();
+    const cookie = await signedIn(app);
+
+    const first = (await (
+      await app.request("/api/widgets/amuse/profiles", {
+        method: "POST",
+        headers: jsonHeaders(cookie),
+        body: JSON.stringify({ name: "Chill" }),
+      })
+    ).json()) as Profile;
+    expect(first.profile_id).toBe("Chill");
+
+    const second = (await (
+      await app.request("/api/widgets/amuse/profiles", {
+        method: "POST",
+        headers: jsonHeaders(cookie),
+        body: JSON.stringify({ name: "Chill" }),
+      })
+    ).json()) as Profile;
+    expect(second.profile_id).toBe("Chill-2");
+
+    const list = (await (
+      await app.request("/api/widgets/amuse/profiles", { headers: { cookie } })
+    ).json()) as Profile[];
+    const ids = list.map((p) => p.profile_id);
+    expect(ids).toContain("Chill");
+    expect(ids).toContain("Chill-2");
+  });
+
+  it("S9 rename changes the profile_id and URL", async () => {
+    const app = createApp();
+    const cookie = await signedIn(app);
+    const wt = await widgetToken(app, cookie);
+
+    const created = (await (
+      await app.request("/api/widgets/amuse/profiles", {
+        method: "POST",
+        headers: jsonHeaders(cookie),
+        body: JSON.stringify({ name: "Old" }),
+      })
+    ).json()) as Profile;
+    expect(created.profile_id).toBe("Old");
+
+    const renamed = await app.request("/api/widgets/amuse/profiles/Old", {
+      method: "PATCH",
+      headers: jsonHeaders(cookie),
+      body: JSON.stringify({ name: "New" }),
+    });
+    expect(renamed.status).toBe(200);
+    const renamedBody = (await renamed.json()) as Profile;
+    expect(renamedBody.profile_id).toBe("New");
+    expect(renamedBody.name).toBe("New");
+    expect(renamedBody._id).toBe(created._id);
+
+    const old = await app.request("/api/widgets/amuse/profiles/Old", {
+      headers: { authorization: `Bearer ${wt}` },
+    });
+    expect(old.status).toBe(404);
+
+    const fresh = await app.request("/api/widgets/amuse/profiles/New", {
+      headers: { authorization: `Bearer ${wt}` },
+    });
+    expect(fresh.status).toBe(200);
+  });
+
+  it("S10 main rename keeps profile_id main", async () => {
+    const app = createApp();
+    const cookie = await signedIn(app);
+
+    const renamed = await app.request("/api/widgets/amuse/profiles/main", {
+      method: "PATCH",
+      headers: jsonHeaders(cookie),
+      body: JSON.stringify({ name: "Renamed" }),
+    });
+    expect(renamed.status).toBe(200);
+    const body = (await renamed.json()) as Profile;
+    expect(body.profile_id).toBe("main");
+    expect(body.name).toBe("Renamed");
   });
 });
