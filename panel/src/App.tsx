@@ -267,16 +267,16 @@ export function App() {
       .finally(() => setDeleteBusy(false));
   };
 
-  const copyProfileId = (id: string) => {
-    navigator.clipboard?.writeText(id);
+  const profileUrl = (id: string) =>
+    new URL(WIDGET_PATH + (id !== "main" ? "/" + id : ""), window.location.origin).href;
+
+  const overlayUrl = profileUrl(currentProfileId);
+
+  const copyProfileUrl = (id: string) => {
+    navigator.clipboard?.writeText(profileUrl(id));
     setCopiedId(id);
     setTimeout(() => setCopiedId((c) => (c === id ? null : c)), 1200);
   };
-
-  const overlayUrl = new URL(
-    WIDGET_PATH + (currentProfileId !== "main" ? "/" + currentProfileId : ""),
-    window.location.origin
-  ).href;
 
   const card = "rounded-2xl border border-line bg-card p-5";
   const sectionTitle = "mb-3 font-poppins text-sm uppercase tracking-widest text-white/50";
@@ -354,8 +354,8 @@ export function App() {
                     )}
                     {!isMain && (
                       <div className="flex shrink-0 items-center gap-1">
-                        <button data-copy-id onClick={() => copyProfileId(p.profile_id)} className={chipAction}>
-                          {copiedId === p.profile_id ? "Copied!" : "Copy ID"}
+                        <button data-copy-url onClick={() => copyProfileUrl(p.profile_id)} className={chipAction}>
+                          {copiedId === p.profile_id ? "Copied!" : "Copy URL"}
                         </button>
                         <button
                           data-edit-profile
