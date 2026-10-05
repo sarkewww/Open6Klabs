@@ -8,7 +8,9 @@
     "dev": "node dev.mjs",
     "mock": "pnpm --dir mock-server dev",
     "widget": "node widget-server.mjs",
-    "panel": "pnpm --dir panel dev"
+    "panel": "pnpm --dir panel dev",
+    "reference": "node tools/parity/run-reference.mjs",
+    "parity": "node tools/parity/dev-parity.mjs"
   },
   "devDependencies": {
     "@types/node": "^26.6.4",

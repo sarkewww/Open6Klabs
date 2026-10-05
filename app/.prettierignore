@@ -1,0 +1,11 @@
+node_modules
+dist
+_reference
+public
+**/__snapshots__/
+# Verbatim ports — must stay byte-for-byte as captured (asserted by
+# src/styles/head-order.test.ts and src/styles/theme.test.ts):
+*.css
+# Host template with a byte-identical host-injected script
+# (asserted by tools/check-host-injection.mjs):
+index.html

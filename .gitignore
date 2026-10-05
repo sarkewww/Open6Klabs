@@ -33,3 +33,10 @@ playwright-report/
 
 # temp beautify scratch
 .omo/_beautify/
+
+# app rewrite - regenerable scratch layers (see tools/beautify-reference.mjs,
+# tools/sync-assets.mjs). The scripts + app/public/asset-manifest.json ARE committed.
+app/_reference/
+app/public/assets/
+app/public/webfonts/
+app/public/css/

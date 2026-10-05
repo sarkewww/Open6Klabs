@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6K Labs</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <!--
+      Stylesheet cascade order MUST match the original widget overlay head
+      (widget/overlay.html) byte-for-byte in sequence:
+
+        1. /css/critical-fonts.css              (Poppins @font-face, no-FOUT)
+        2. /css/fa6.css                         (Font Awesome 6)
+        3. Tailwind v4 sheet                    (originally index-CEICj85Z.css)
+        4. /assets/main-Dj8S0xjW.css            (site stylesheet + 37 font families)
+        5. /css/widget.css                      (originally AmuseWidget-D785d3vh.css)
+        6. /css/player.css                      (originally PlayerWindows98-Dx94IdDH.css)
+
+      Slot 3 is the Tailwind v4 sheet generated from app/src/styles/tailwind.css.
+      It is linked here (NOT imported from main.tsx) so Vite cannot silently
+      append it after the later sheets and break the cascade. Vite still moves
+      the generated link to the end of <head>, so the `amuse-css-chain-order`
+      plugin in vite.config.ts re-inserts it after /css/fa6.css at build time.
+      Slots 5/6 are the ported widget/player CSS, published to /css/ by
+      tools/sync-assets.mjs from their canonical app/src/styles/ copies (Vite
+      would otherwise merge them into the slot-3 sheet). See
+      .omo/notepads/amuse-widget-rewrite/learnings.md (Task 5).
+      Asserted by app/src/styles/head-order.test.ts + tools/check-head-order.mjs.
+    -->
+    <link rel="stylesheet" href="/css/critical-fonts.css" />
+    <link rel="stylesheet" href="/css/fa6.css" />
+    <link rel="stylesheet" href="/src/styles/tailwind.css?direct" />
+    <link rel="stylesheet" href="/assets/main-Dj8S0xjW.css" />
+    <link rel="stylesheet" href="/css/widget.css" />
+    <link rel="stylesheet" href="/css/player.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!--
+      Live settings refresh — host-injected, parity with widget-server.mjs:63-65.
+
+      The original host appends this exact script to widget/overlay.html at serve
+      time: it subscribes to the self-hosted SSE endpoint and, on a
+      `profile-changed` event, synthesizes `visibilitychange` + `focus` window
+      events so react-query refetches the settings without a reload.
+
+      The rewrite bakes the equivalent into its own host HTML (so it survives
+      both `vite dev` and `vite preview`), keeping the same EventSource path,
+      the same `profile-changed` event name, and the same two dispatched events.
+      Asserted by tools/check-host-injection.mjs.
+    -->
+    <script>(function(){try{var es=new EventSource("/api/events");es.addEventListener("profile-changed",function(){try{window.dispatchEvent(new Event("visibilitychange"));}catch(e){}try{window.dispatchEvent(new Event("focus"));}catch(e){}});}catch(e){}})();</script>
+  </body>
+</html>
