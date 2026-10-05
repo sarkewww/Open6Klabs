@@ -424,6 +424,15 @@ export function createApp() {
     })
   );
 
+  // ---- widget source token endpoints (ADDITIVE — plan Todo 30) ----
+  // The captured client fetches these two endpoints when the spotify / ytm-desktop
+  // source is active. They were missing from the original mock-server (verified:
+  // the client got a 404), which made the parity fixture's "recorded baseline" a
+  // 404 instead of a real success response. Both contracts are `200 {token: string}`.
+  // No existing route/behaviour is changed; these are pure additions.
+  app.get("/api/widget/spotify/token", (c) => c.json({ token: "local-spotify-access-token" }));
+  app.get("/api/widget/accounts/ytmdesktop", (c) => c.json({ token: "local-ytmdesktop-token" }));
+
   // ---- stubs ----
   app.get("/api/connections", (c) => c.json([]));
   app.get("/api/canvas/search", (c) => c.json({ canvas_url: null }));
