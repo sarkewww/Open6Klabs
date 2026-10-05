@@ -1,0 +1,345 @@
+{
+  "meta": {
+    "recordedAt": "2026-10-04T14:59:24.048Z",
+    "node": "v24.16.0",
+    "origin": "http://localhost:5199",
+    "widgetToken": "local",
+    "profileId": "main",
+    "note": "Recorded from the ORIGINAL widget (widget-server.mjs) against mock-server. External/source requests are stubbed/aborted; only their request shape is recorded. Volatile ids/timestamps are scrubbed. directProbes records the two additive source-token endpoints directly from mock-server."
+  },
+  "entries": [
+    {
+      "method": "GET",
+      "url": "https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css",
+      "host": "cdn-uicons.flaticon.com",
+      "path": "/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css",
+      "resourceType": "stylesheet",
+      "note": "external-stub"
+    },
+    {
+      "method": "GET",
+      "url": "https://glorp.6klabs.com/array/phc_E0smdIhW8u6fIOFzLc0XGAst7OayIru19tfmQ288w2K/config.js",
+      "host": "glorp.6klabs.com",
+      "path": "/array/phc_E0smdIhW8u6fIOFzLc0XGAst7OayIru19tfmQ288w2K/config.js",
+      "resourceType": "script",
+      "note": "external-stub"
+    },
+    {
+      "method": "POST",
+      "url": "https://content.6klabs.com/api/graphql",
+      "host": "content.6klabs.com",
+      "path": "/api/graphql",
+      "resourceType": "fetch",
+      "note": "external-stub"
+    },
+    {
+      "method": "GET",
+      "url": "https://6klabs.com/api/auth/get-session",
+      "host": "6klabs.com",
+      "path": "/api/auth/get-session",
+      "resourceType": "fetch",
+      "note": "external-stub"
+    },
+    {
+      "method": "GET",
+      "url": "https://glorp.6klabs.com/array/phc_E0smdIhW8u6fIOFzLc0XGAst7OayIru19tfmQ288w2K/config?ip=0&_=1791125958119&ver=1.364.1",
+      "host": "glorp.6klabs.com",
+      "path": "/array/phc_E0smdIhW8u6fIOFzLc0XGAst7OayIru19tfmQ288w2K/config",
+      "resourceType": "fetch",
+      "note": "external-stub"
+    },
+    {
+      "method": "POST",
+      "url": "https://glorp.6klabs.com/flags/?v=2&ip=0&_=1791125958134&ver=1.364.1&compression=base64",
+      "host": "glorp.6klabs.com",
+      "path": "/flags/",
+      "resourceType": "fetch",
+      "note": "external-stub"
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:5199/api/widget/settings",
+      "host": "localhost:5199",
+      "path": "/api/widget/settings",
+      "resourceType": "fetch",
+      "status": 200,
+      "contentType": "application/json",
+      "body": {
+        "general": {
+          "hide_popup": true
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:5199/api/widget/subscription",
+      "host": "localhost:5199",
+      "path": "/api/widget/subscription",
+      "resourceType": "fetch",
+      "status": 200,
+      "contentType": "application/json",
+      "body": {
+        "tier": "PRO",
+        "status": "active",
+        "current_period_end": null,
+        "cancel_at_period_end": false
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:5199/api/widgets/amuse/profiles/main",
+      "host": "localhost:5199",
+      "path": "/api/widgets/amuse/profiles/main",
+      "resourceType": "fetch",
+      "status": 200,
+      "contentType": "application/json",
+      "body": {
+        "_id": "<_id>",
+        "user_id": "<user_id>",
+        "profile_id": "main",
+        "name": "Main",
+        "music_service": "pear-desktop",
+        "settings": {
+          "skin": "boxy",
+          "theme": "default_light",
+          "cover": "vinyl",
+          "tint_color": "#ffffff",
+          "font": "poppins",
+          "visible_duration": 5,
+          "hide_delay": 0,
+          "cover_blur": true,
+          "cover_glow": true,
+          "hide_on_pause": false,
+          "song_change_only": false,
+          "magic_colors": true,
+          "hide_visualizer": false,
+          "show_animation": "default_in",
+          "hide_animation": "default_out",
+          "nothing_playing_cover": null,
+          "nothing_playing_title": null,
+          "nothing_playing_artist": null,
+          "is_demo": false
+        },
+        "created_at": "<created_at>",
+        "updated_at": "<updated_at>"
+      }
+    },
+    {
+      "method": "POST",
+      "url": "http://localhost:5199/api/pusher/realtime/auth",
+      "host": "localhost:5199",
+      "path": "/api/pusher/realtime/auth",
+      "resourceType": "xhr",
+      "status": 200,
+      "contentType": "application/json",
+      "body": {
+        "auth": "local"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:9863/query",
+      "host": "localhost:9863",
+      "path": "/query",
+      "resourceType": "xhr",
+      "note": "source-request-shape",
+      "requestHeaders": {
+        "content-type": null,
+        "authorization": null,
+        "sentry-trace": null
+      },
+      "postData": null
+    },
+    {
+      "method": "GET",
+      "url": "https://ipv4.icanhazip.com/",
+      "host": "ipv4.icanhazip.com",
+      "path": "/",
+      "resourceType": "fetch",
+      "note": "external-stub"
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:5199/api/widgets/amuse/profiles/main",
+      "host": "localhost:5199",
+      "path": "/api/widgets/amuse/profiles/main",
+      "resourceType": "fetch",
+      "status": 200,
+      "contentType": "application/json",
+      "body": {
+        "_id": "<_id>",
+        "user_id": "<user_id>",
+        "profile_id": "main",
+        "name": "Main",
+        "music_service": "pear-desktop",
+        "settings": {
+          "skin": "boxy",
+          "theme": "default_light",
+          "cover": "vinyl",
+          "tint_color": "#ffffff",
+          "font": "poppins",
+          "visible_duration": 5,
+          "hide_delay": 0,
+          "cover_blur": true,
+          "cover_glow": true,
+          "hide_on_pause": false,
+          "song_change_only": false,
+          "magic_colors": true,
+          "hide_visualizer": false,
+          "show_animation": "default_in",
+          "hide_animation": "default_out",
+          "nothing_playing_cover": null,
+          "nothing_playing_title": null,
+          "nothing_playing_artist": null,
+          "is_demo": false
+        },
+        "created_at": "<created_at>",
+        "updated_at": "<updated_at>"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:5199/api/widget/spotify/token",
+      "host": "localhost:5199",
+      "path": "/api/widget/spotify/token",
+      "resourceType": "fetch",
+      "status": 200,
+      "contentType": "application/json",
+      "body": {
+        "token": "local-spotify-access-token"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:5199/api/widgets/amuse/profiles/main",
+      "host": "localhost:5199",
+      "path": "/api/widgets/amuse/profiles/main",
+      "resourceType": "fetch",
+      "status": 200,
+      "contentType": "application/json",
+      "body": {
+        "_id": "<_id>",
+        "user_id": "<user_id>",
+        "profile_id": "main",
+        "name": "Main",
+        "music_service": "pear-desktop",
+        "settings": {
+          "skin": "boxy",
+          "theme": "default_light",
+          "cover": "vinyl",
+          "tint_color": "#ffffff",
+          "font": "poppins",
+          "visible_duration": 5,
+          "hide_delay": 0,
+          "cover_blur": true,
+          "cover_glow": true,
+          "hide_on_pause": false,
+          "song_change_only": false,
+          "magic_colors": true,
+          "hide_visualizer": false,
+          "show_animation": "default_in",
+          "hide_animation": "default_out",
+          "nothing_playing_cover": null,
+          "nothing_playing_title": null,
+          "nothing_playing_artist": null,
+          "is_demo": false
+        },
+        "created_at": "<created_at>",
+        "updated_at": "<updated_at>"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:9863/query",
+      "host": "localhost:9863",
+      "path": "/query",
+      "resourceType": "xhr",
+      "note": "source-request-shape",
+      "requestHeaders": {
+        "content-type": null,
+        "authorization": null,
+        "sentry-trace": null
+      },
+      "postData": null
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:9863/query",
+      "host": "localhost:9863",
+      "path": "/query",
+      "resourceType": "xhr",
+      "note": "source-request-shape",
+      "requestHeaders": {
+        "content-type": null,
+        "authorization": null,
+        "sentry-trace": null
+      },
+      "postData": null
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:9863/query",
+      "host": "localhost:9863",
+      "path": "/query",
+      "resourceType": "xhr",
+      "note": "source-request-shape",
+      "requestHeaders": {
+        "content-type": null,
+        "authorization": null,
+        "sentry-trace": null
+      },
+      "postData": null
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:9863/query",
+      "host": "localhost:9863",
+      "path": "/query",
+      "resourceType": "xhr",
+      "note": "source-request-shape",
+      "requestHeaders": {
+        "content-type": null,
+        "authorization": null,
+        "sentry-trace": null
+      },
+      "postData": null
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:9863/query",
+      "host": "localhost:9863",
+      "path": "/query",
+      "resourceType": "xhr",
+      "note": "source-request-shape",
+      "requestHeaders": {
+        "content-type": null,
+        "authorization": null,
+        "sentry-trace": null
+      },
+      "postData": null
+    }
+  ],
+  "directProbes": [
+    {
+      "method": "GET",
+      "url": "http://localhost:8787/api/widget/spotify/token",
+      "path": "/api/widget/spotify/token",
+      "status": 200,
+      "body": {
+        "token": "local-spotify-access-token"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "http://localhost:8787/api/widget/accounts/ytmdesktop",
+      "path": "/api/widget/accounts/ytmdesktop",
+      "status": 200,
+      "body": {
+        "token": "local-ytmdesktop-token"
+      }
+    }
+  ],
+  "websockets": [
+    "ws://localhost:6001/app/3dd5f6a0-6026-4a71-b223-e1d2697fcec3?protocol=7&client=js&version=8.4.0&flash=false"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "calibratedAt": "2026-10-05T10:26:18.550Z",
+  "method": "floor = max(measured original-vs-original noise ceiling, frozen calibration) per viewport; threshold = floor + epsilon. The calibration (desktop 0.8822pp, mobile 0.4217pp) is the max observed across the verified baseline runs because a single 16-sample max is unstable. epsilon is a finite-sample margin (desktop 0.15pp, mobile 0.10pp) covering the residual spread of the noisiest skin (minimal), an order of magnitude below the smallest genuine divergence (1.45%), so it cannot hide a real difference.",
+  "viewports": {
+    "desktop": {
+      "measured": 0.5664,
+      "floor": 0.8822,
+      "epsilon": 0.15,
+      "threshold": 1.0322
+    },
+    "mobile": {
+      "measured": 0.3157,
+      "floor": 0.4217,
+      "epsilon": 0.1,
+      "threshold": 0.5217
+    }
+  },
+  "unmet": [
+    {
+      "caseId": "state:YTMD_NOT_CONNECTED",
+      "group": "state",
+      "viewport": "desktop",
+      "pixelPct": 1.4502,
+      "threshold": 1.0322,
+      "reason": "Both hosts render no skin root; the rewrite still mounts an empty widget root where the original renders none — a host-shell empty/error-branch difference. Structural + style gates are 0 (no key nodes exist)."
+    },
+    {
+      "caseId": "state:PROFILE_NOT_EXISTING",
+      "group": "state",
+      "viewport": "desktop",
+      "pixelPct": 1.4502,
+      "threshold": 1.0322,
+      "reason": "Both hosts render no skin root; the rewrite still mounts an empty widget root where the original renders none — a host-shell empty/error-branch difference. Structural + style gates are 0 (no key nodes exist)."
+    },
+    {
+      "caseId": "state:YTMD_NOT_CONNECTED",
+      "group": "state",
+      "viewport": "mobile",
+      "pixelPct": 5.71,
+      "threshold": 0.5217,
+      "reason": "Both hosts render no skin root; the rewrite still mounts an empty widget root where the original renders none — a host-shell empty/error-branch difference. Structural + style gates are 0 (no key nodes exist)."
+    },
+    {
+      "caseId": "state:PROFILE_NOT_EXISTING",
+      "group": "state",
+      "viewport": "mobile",
+      "pixelPct": 5.71,
+      "threshold": 0.5217,
+      "reason": "Both hosts render no skin root; the rewrite still mounts an empty widget root where the original renders none — a host-shell empty/error-branch difference. Structural + style gates are 0 (no key nodes exist)."
+    },
+    {
+      "caseId": "state:DISABLED_PROFILE",
+      "group": "state",
+      "viewport": "desktop",
+      "pixelPct": 22.3243,
+      "threshold": 1.0322,
+      "reason": "Original renders a Pro membership upsell popup (\"Custom Nothing Playing Info …\") that the rewrite does not; the key-node structural and computed-style gates are both 0 — the divergence is the upsell overlay chrome, not the widget contract."
+    },
+    {
+      "caseId": "state:DISABLED_PROFILE",
+      "group": "state",
+      "viewport": "mobile",
+      "pixelPct": 18.9221,
+      "threshold": 0.5217,
+      "reason": "Original renders a Pro membership upsell popup (\"Custom Nothing Playing Info …\") that the rewrite does not; the key-node structural and computed-style gates are both 0 — the divergence is the upsell overlay chrome, not the widget contract."
+    },
+    {
+      "caseId": "state:DISABLED_PRO_SKIN",
+      "group": "state",
+      "viewport": "desktop",
+      "pixelPct": 22.3438,
+      "threshold": 1.0322,
+      "reason": "Original renders a Pro membership upsell popup that the rewrite does not (the rewrite renders an empty root); structural + style gates are 0."
+    },
+    {
+      "caseId": "state:DISABLED_DISCORD_SKIN",
+      "group": "state",
+      "viewport": "desktop",
+      "pixelPct": 22.3346,
+      "threshold": 1.0322,
+      "reason": "Original renders a Pro membership upsell popup that the rewrite does not (the rewrite renders an empty root); structural + style gates are 0."
+    },
+    {
+      "caseId": "state:DISABLED_PRO_SKIN",
+      "group": "state",
+      "viewport": "mobile",
+      "pixelPct": 18.9227,
+      "threshold": 0.5217,
+      "reason": "Original renders a Pro membership upsell popup that the rewrite does not (the rewrite renders an empty root); structural + style gates are 0."
+    },
+    {
+      "caseId": "state:ACCOUNT_NOT_EXISTING",
+      "group": "state",
+      "viewport": "desktop",
+      "pixelPct": 1.4502,
+      "threshold": 1.0322,
+      "reason": "Both hosts render no skin root; the rewrite still mounts an empty widget root where the original renders none — a host-shell empty/error-branch difference. Structural + style gates are 0 (no key nodes exist)."
+    },
+    {
+      "caseId": "state:DISABLED_DISCORD_SKIN",
+      "group": "state",
+      "viewport": "mobile",
+      "pixelPct": 18.9212,
+      "threshold": 0.5217,
+      "reason": "Original renders a Pro membership upsell popup that the rewrite does not (the rewrite renders an empty root); structural + style gates are 0."
+    },
+    {
+      "caseId": "state:ACCOUNT_NOT_EXISTING",
+      "group": "state",
+      "viewport": "mobile",
+      "pixelPct": 5.71,
+      "threshold": 0.5217,
+      "reason": "Both hosts render no skin root; the rewrite still mounts an empty widget root where the original renders none — a host-shell empty/error-branch difference. Structural + style gates are 0 (no key nodes exist)."
+    }
+  ],
+  "missingReason": []
+}
