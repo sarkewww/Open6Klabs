@@ -1,0 +1,257 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Gallery skin (Hr) > renders the faithful Hr DOM (snapshot) 1`] = `
+<div
+  class="relative flex h-full w-full select-none items-center justify-center"
+  data-skin="gallery"
+  data-testid="amuse-skin"
+  style="padding: 5%;"
+>
+  <div
+    style="transform: scale(1); transform-origin: center; perspective: 900px;"
+  >
+    <div
+      class="flex h-fit w-52 flex-col gap-2 font-poppins"
+    >
+      <div
+        class="relative aspect-square h-full"
+        data-cover="square"
+        data-testid="amuse-cover"
+      >
+        <div
+          class="relative h-full w-full transform-gpu"
+          style="transform-origin: center center;"
+        >
+          <div
+            class="relative z-50"
+          >
+            <div
+              class="aspect-square h-full"
+            >
+              <div
+                class="relative h-full w-full"
+              >
+                <div
+                  class="relative flex aspect-square items-center justify-center overflow-hidden"
+                  data-testid="amuse-cover-art"
+                  style="border-radius: 0.5rem; -webkit-mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%); mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%);"
+                >
+                  <div
+                    class="absolute inset-0"
+                    data-testid="amuse-cover-art-image"
+                    style="background-image: url("/assets/cover.png"); background-size: cover; background-position: center center;"
+                  />
+                  <div
+                    class="relative flex h-full w-full scale-[101%] transform-gpu items-center justify-center overflow-hidden"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 overflow-hidden blur-md brightness-150"
+            data-cover-glow="false"
+            data-testid="amuse-cover-glow"
+            style="opacity: 0; border-radius: 0.5rem;"
+          >
+            <div
+              class="absolute inset-0"
+              data-testid="amuse-cover-glow-image"
+              style="background-image: url("/assets/cover.png"); background-position: center center; background-repeat: no-repeat; background-size: cover;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="relative z-50 transform-gpu overflow-clip rounded-lg transition-all duration-300 bg-spotify-black text-white flex h-[63px] w-full flex-col justify-center px-3 py-1"
+        data-magic-colors="true"
+        data-testid="amuse-skin-surface"
+        style="background-color: rgb(83, 83, 83); color: rgb(255, 255, 255);"
+      >
+        <p
+          class="relative z-50 overflow-clip whitespace-nowrap text-lg font-bold mt-0.5"
+        >
+          <span
+            style="animation-duration: 10s; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: alternate; animation-name: move;"
+          >
+            Test Song
+          </span>
+        </p>
+        <p
+          class="relative z-50 mb-1 overflow-clip text-ellipsis whitespace-nowrap text-sm"
+        >
+          Test Artist
+        </p>
+        <div
+          class="absolute -left-[50%] -top-[50%] h-[200%] w-[200%] transition-all duration-300"
+          data-cover-blur="false"
+          data-testid="amuse-cover-blur"
+          style="background-image: url("/assets/cover.png"); background-position: center center; filter: blur(15px) brightness(80%) saturate(120%); opacity: 0%;"
+        />
+      </div>
+      <div
+        class="relative z-50 h-full transform-gpu overflow-clip rounded-lg transition-all duration-300 bg-spotify-black text-white flex w-full items-center gap-2 p-3"
+        data-magic-colors="true"
+        style="background-color: rgb(83, 83, 83); color: rgb(255, 255, 255);"
+      >
+        <p
+          class="text-sm font-bold h-[20px]"
+        >
+          01:00
+        </p>
+        <div
+          class="bottom-0 z-50 h-2 w-full rounded-full transition-all duration-300 bg-white"
+          id="playbar"
+          style="background-color: rgb(83, 83, 83);"
+        >
+          <div
+            class="h-full w-0 min-w-[9px] rounded-full transition-all duration-1000 ease-linear"
+            id="active"
+            style="width: 33.33333333333333%; background-color: rgb(255, 255, 255); transition: width 1s, background-color 0.3s;"
+          />
+        </div>
+        <p
+          class="text-sm font-bold h-[20px]"
+        >
+          03:00
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Minimal skin (Rr) > renders the faithful Rr DOM (snapshot) 1`] = `
+<div
+  class="relative flex h-full w-full select-none items-center justify-center"
+  data-skin="minimal"
+  data-testid="amuse-skin"
+  style="padding: 5%;"
+>
+  <div
+    style="transform: scale(1); transform-origin: center; perspective: 900px;"
+  >
+    <div
+      class="font-poppins"
+    >
+      <div
+        class="flex flex-col gap-2"
+      >
+        <div
+          class="z-50 transform-gpu rounded-lg transition-all duration-300 bg-spotify-black text-white relative flex h-8 w-[400px] items-center justify-between overflow-hidden"
+          data-magic-colors="true"
+          data-testid="amuse-skin-surface"
+          style="background-color: rgb(83, 83, 83); color: rgb(255, 255, 255);"
+        >
+          <div
+            class="relative flex h-8 w-full items-center p-1"
+          >
+            <div
+              class="relative aspect-square h-full"
+              data-cover="square"
+              data-testid="amuse-cover"
+            >
+              <div
+                class="relative h-full w-full transform-gpu"
+                style="transform-origin: center center;"
+              >
+                <div
+                  class="relative z-50"
+                >
+                  <div
+                    class="aspect-square h-full"
+                  >
+                    <div
+                      class="relative h-full w-full"
+                    >
+                      <div
+                        class="relative flex aspect-square items-center justify-center overflow-hidden"
+                        data-testid="amuse-cover-art"
+                        style="border-radius: 0.5rem; -webkit-mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%); mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%);"
+                      >
+                        <div
+                          class="absolute inset-0"
+                          data-testid="amuse-cover-art-image"
+                          style="background-image: url("/assets/cover.png"); background-size: cover; background-position: center center;"
+                        />
+                        <div
+                          class="relative flex h-full w-full scale-[101%] transform-gpu items-center justify-center overflow-hidden"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="absolute inset-0 overflow-hidden blur-md brightness-150"
+                  data-cover-glow="false"
+                  data-testid="amuse-cover-glow"
+                  style="opacity: 0; border-radius: 0.5rem;"
+                >
+                  <div
+                    class="absolute inset-0"
+                    data-testid="amuse-cover-glow-image"
+                    style="background-image: url("/assets/cover.png"); background-position: center center; background-repeat: no-repeat; background-size: cover;"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="relative z-50 overflow-hidden whitespace-nowrap ml-3"
+            >
+              <div
+                class="inline-block"
+                style="--translate-x: -0px; animation-duration: 10s; animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: alternate;"
+              >
+                <div
+                  class="flex items-center justify-center gap-2"
+                >
+                  <p
+                    class="relative z-50 overflow-clip whitespace-nowrap font-bold m-0 text-sm"
+                  >
+                    <span
+                      style="animation-duration: 10s; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: alternate; animation-name: move;"
+                    >
+                      Test Song
+                    </span>
+                  </p>
+                  <span
+                    class=""
+                  >
+                    •
+                  </span>
+                  <p
+                    class="relative z-50 overflow-clip text-ellipsis whitespace-nowrap m-0 text-sm"
+                  >
+                    Test Artist
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="ml-auto flex items-center gap-2"
+            >
+              <div
+                class="bottom-0 z-50 h-2 rounded-full transition-all duration-300 bg-white mx-3 w-24"
+                id="playbar"
+                style="background-color: rgb(83, 83, 83);"
+              >
+                <div
+                  class="h-full w-0 min-w-[9px] rounded-full transition-all duration-1000 ease-linear"
+                  id="active"
+                  style="width: 33.33333333333333%; background-color: rgb(255, 255, 255); transition: width 1s, background-color 0.3s;"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute -left-[50%] -top-[50%] h-[200%] w-[200%] transition-all duration-300"
+            data-cover-blur="false"
+            data-testid="amuse-cover-blur"
+            style="background-image: url("/assets/cover.png"); background-position: center center; filter: blur(15px) brightness(80%) saturate(120%); opacity: 0%;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

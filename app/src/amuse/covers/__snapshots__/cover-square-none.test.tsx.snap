@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`cover / square > matches the reference square structure (snapshot) 1`] = `
+<div
+  class="relative aspect-square h-full"
+  data-cover="square"
+  data-testid="amuse-cover"
+>
+  <div
+    class="relative h-full w-full transform-gpu"
+    style="transform-origin: center center;"
+  >
+    <div
+      class="relative z-50"
+    >
+      <div
+        class="aspect-square h-full"
+      >
+        <div
+          class="relative h-full w-full"
+        >
+          <div
+            class="relative flex aspect-square items-center justify-center overflow-hidden"
+            data-testid="amuse-cover-art"
+            style="border-radius: 0.5rem; -webkit-mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%); mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%);"
+          >
+            <div
+              class="absolute inset-0"
+              data-testid="amuse-cover-art-image"
+              style="background-image: url("https://example.test/album-art.png"); background-size: cover; background-position: center center;"
+            />
+            <div
+              class="relative flex h-full w-full scale-[101%] transform-gpu items-center justify-center overflow-hidden"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="absolute inset-0 overflow-hidden blur-md brightness-150"
+      data-cover-glow="true"
+      data-testid="amuse-cover-glow"
+      style="opacity: 1; border-radius: 0.5rem;"
+    >
+      <div
+        class="absolute inset-0"
+        data-testid="amuse-cover-glow-image"
+        style="background-image: url("https://example.test/album-art.png"); background-position: center center; background-repeat: no-repeat; background-size: cover;"
+      />
+    </div>
+  </div>
+</div>
+`;

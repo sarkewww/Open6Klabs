@@ -1,0 +1,305 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Shell skin (original Tr) > matches the Shell snapshot 1`] = `
+<div
+  class="relative flex h-full w-full select-none items-center justify-center"
+  data-skin="shell"
+  data-testid="amuse-skin"
+  style="padding: 5%;"
+>
+  <div
+    style="transform: scale(1); transform-origin: center; perspective: 900px;"
+  >
+    <div
+      class="h-full w-96 overflow-hidden rounded-lg transition-[background-color,outline] duration-300 bg-shell-bg text-white outline outline-2 outline-shell-menu-bar"
+      style="font-family: JetBrainsMono-Bold; outline-offset: -2px;"
+    >
+      <div
+        class="relative flex h-8 w-full items-center justify-end p-2 text-center transition-[background-color] duration-300 bg-shell-menu-bar"
+      >
+        <img
+          alt=""
+          class="h-5"
+          src="/assets/buttons-CPde-GSm.svg"
+        />
+        <p
+          class="absolute left-0 right-0 transition-[color] duration-300"
+        >
+          root@amuse
+        </p>
+      </div>
+      <div
+        class="p-4 text-white"
+      >
+        <p>
+          <span
+            class="transition-[color] duration-300"
+            style="color: rgb(255, 255, 255);"
+          >
+            root@amuse&gt;
+          </span>
+          <span
+            class="transition duration-300 text-white"
+            style="color: rgb(255, 255, 255);"
+          >
+            ./amuse
+          </span>
+           
+          <span
+            class="text-gray-400"
+          >
+            --nowplaying
+          </span>
+        </p>
+        <p
+          class="overflow-hidden text-ellipsis whitespace-nowrap transition-[color] duration-300"
+        >
+          Title: 
+          -
+        </p>
+        <p
+          class="overflow-hidden text-ellipsis whitespace-nowrap transition-[color] duration-300"
+        >
+          Artist: 
+          -
+        </p>
+        <p
+          style="hyphens: auto;"
+        >
+          <span
+            class="transition-[color] duration-300"
+          >
+            [
+          </span>
+          <span
+            class="transition-[color] duration-300"
+            style="color: rgb(255, 255, 255);"
+          >
+            #
+          </span>
+          <span
+            class="transition-[color] duration-300"
+          >
+            ---------------------------------
+          </span>
+          <span
+            class="transition-[color] duration-300"
+          >
+            ]
+          </span>
+        </p>
+        <p>
+          <span
+            class="transition-[color] duration-300"
+          >
+            00:00
+          </span>
+          <span
+            class="transition-[color] duration-300"
+          >
+             - 
+          </span>
+          <span
+            class="transition-[color] duration-300"
+          >
+            00:00
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`macOS skin (original zr) > matches the macOS snapshot 1`] = `
+<div
+  class="relative flex h-full w-full select-none items-center justify-center"
+  data-skin="macos"
+  data-testid="amuse-skin"
+  style="padding: 5%;"
+>
+  <div
+    style="transform: scale(1); transform-origin: center; perspective: 900px;"
+  >
+    <div
+      class="flex flex-col overflow-hidden rounded-2xl transition-[background-color,outline] duration-300 bg-osx-content-bg text-white outline-2 outline-osx-top-bg font-poppins"
+    >
+      <div
+        class="flex h-10 w-full justify-between border-b-[2px] p-4 transition duration-300 border-b-gray-800 bg-osx-top-bg"
+      >
+        <div
+          class="flex items-center gap-3"
+        >
+          <div
+            class="h-4 w-4 rounded-full bg-osx-close"
+          />
+          <div
+            class="h-4 w-4 rounded-full bg-osx-minimize"
+          />
+          <div
+            class="h-4 w-4 rounded-full bg-osx-fullscreen"
+          />
+        </div>
+        <div
+          class="flex items-center transition-all duration-500"
+          style="opacity: 100%;"
+        >
+          <div
+            class="flex w-fit items-center gap-1 px-2"
+          >
+            <div
+              class="flex flex-col items-center justify-center"
+            >
+              <div
+                class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-52.49999999999999% + 3px));"
+              />
+              <div
+                class="h-1 w-1"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.0499999999999998);"
+              />
+              <div
+                class="h-1 w-1 rounded-bl-full rounded-br-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(52.49999999999999% - 3px));"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center justify-center"
+            >
+              <div
+                class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-75% + 3px));"
+              />
+              <div
+                class="h-1 w-1"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.5);"
+              />
+              <div
+                class="h-1 w-1 rounded-bl-full rounded-br-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(75% - 3px));"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center justify-center"
+            >
+              <div
+                class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-89.99999999999999% + 3px));"
+              />
+              <div
+                class="h-1 w-1"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.7999999999999998);"
+              />
+              <div
+                class="h-1 w-1 rounded-bl-full rounded-br-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(89.99999999999999% - 3px));"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center justify-center"
+            >
+              <div
+                class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-75% + 3px));"
+              />
+              <div
+                class="h-1 w-1"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.5);"
+              />
+              <div
+                class="h-1 w-1 rounded-bl-full rounded-br-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(75% - 3px));"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center justify-center"
+            >
+              <div
+                class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-52.49999999999999% + 3px));"
+              />
+              <div
+                class="h-1 w-1"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.0499999999999998);"
+              />
+              <div
+                class="h-1 w-1 rounded-bl-full rounded-br-full"
+                style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(52.49999999999999% - 3px));"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex items-center p-5 gap-2"
+      >
+        <div
+          class="relative h-28 transition duration-1000 drop-shadow-[0_0px_10px_rgba(0,0,0,0.7)]"
+        >
+          <div
+            data-testid="amuse-cover"
+          />
+        </div>
+        <div
+          class="flex w-full min-w-0 flex-col gap-2"
+          style="color: rgb(255, 255, 255); outline-offset: -2px;"
+        >
+          <div
+            class="relative w-52 overflow-x-clip rounded px-2 transition-all duration-300"
+            id="songinfo"
+          >
+            <p
+              class="relative z-50 overflow-clip whitespace-nowrap text-lg font-bold"
+            >
+              <span
+                style="animation-duration: 10s; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: alternate; animation-name: move;"
+              >
+                -
+              </span>
+            </p>
+            <p
+              class="relative z-50 mb-1 overflow-clip text-ellipsis whitespace-nowrap text-sm"
+            >
+              -
+            </p>
+          </div>
+          <div
+            class="flex h-full w-full items-center justify-between gap-2 rounded px-2 text-lg transition-all duration-300"
+            id="songtime"
+          >
+            <div
+              class="flex w-full flex-col gap-1"
+            >
+              <div
+                class="flex h-[20px] w-full justify-between"
+              >
+                <p
+                  class="text-sm font-bold"
+                >
+                  00:00
+                </p>
+                <p
+                  class="text-sm font-bold"
+                >
+                  00:00
+                </p>
+              </div>
+              <div
+                class="bottom-0 z-50 h-2 w-full rounded-full transition-all duration-300 bg-white"
+                id="playbar"
+                style="background-color: rgb(83, 83, 83);"
+              >
+                <div
+                  class="h-full w-0 min-w-[9px] rounded-full transition-all duration-1000 ease-linear"
+                  id="active"
+                  style="width: 0%; background-color: rgb(255, 255, 255); transition: width 1s, background-color 0.3s;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

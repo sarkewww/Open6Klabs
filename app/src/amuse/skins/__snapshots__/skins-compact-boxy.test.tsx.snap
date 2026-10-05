@@ -1,0 +1,673 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Boxy skin (Vr) > matches the Vr snapshot 1`] = `
+<div
+  class="relative flex h-full w-full select-none items-center justify-center"
+  data-skin="boxy"
+  data-testid="amuse-skin"
+  style="padding: 5%;"
+>
+  <div
+    style="transform: scale(1); transform-origin: center; perspective: 900px;"
+  >
+    <div
+      class="bottom-3 flex h-20 select-none items-end gap-2 text-white font-poppins"
+    >
+      <div
+        class="relative aspect-square h-full"
+        data-cover="square"
+        data-testid="amuse-cover"
+      >
+        <div
+          class="relative h-full w-full transform-gpu"
+          style="transform-origin: center center;"
+        >
+          <div
+            class="relative z-50"
+          >
+            <div
+              class="aspect-square h-full"
+            >
+              <div
+                class="relative h-full w-full"
+              >
+                <div
+                  class="relative flex aspect-square items-center justify-center overflow-hidden"
+                  data-testid="amuse-cover-art"
+                  style="border-radius: 0.5rem; -webkit-mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%); mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%);"
+                >
+                  <div
+                    class="absolute inset-0"
+                    data-testid="amuse-cover-art-image"
+                    style="background-image: url("/assets/spotify_no_cover-DlW0D82t.svg"); background-size: cover; background-position: center center;"
+                  />
+                  <div
+                    class="relative flex h-full w-full scale-[101%] transform-gpu items-center justify-center overflow-hidden"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute inset-0 overflow-hidden blur-md brightness-150"
+            data-cover-glow="false"
+            data-testid="amuse-cover-glow"
+            style="opacity: 0; border-radius: 0.5rem;"
+          >
+            <div
+              class="absolute inset-0"
+              data-testid="amuse-cover-glow-image"
+              style="background-image: url("/assets/spotify_no_cover-DlW0D82t.svg"); background-position: center center; background-repeat: no-repeat; background-size: cover;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="relative z-50 h-full transform-gpu overflow-clip rounded-lg transition-all duration-300 bg-spotify-black text-white flex w-56 flex-col justify-center"
+        data-magic-colors="true"
+        style="background-color: rgb(0, 0, 255); color: rgb(255, 255, 0);"
+      >
+        <div
+          class="px-7"
+        >
+          <p
+            class="relative z-50 overflow-clip whitespace-nowrap text-lg font-bold"
+          >
+            <span
+              style="animation-duration: 10s; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: alternate; animation-name: move;"
+            >
+              Song X
+            </span>
+          </p>
+          <p
+            class="relative z-50 mb-1 overflow-clip text-ellipsis whitespace-nowrap text-sm"
+          >
+            Artist Y
+          </p>
+          <div
+            class="absolute -left-[50%] -top-[50%] h-[200%] w-[200%] transition-all duration-300"
+            data-cover-blur="false"
+            data-testid="amuse-cover-blur"
+            style="background-image: url("/assets/spotify_no_cover-DlW0D82t.svg"); background-position: center center; filter: blur(15px) brightness(80%) saturate(120%); opacity: 0%;"
+          />
+        </div>
+      </div>
+      <div
+        class="relative z-50 h-full transform-gpu overflow-clip rounded-lg duration-300 bg-spotify-black text-white flex w-[204px] items-center px-7 transition-[width]"
+        data-magic-colors="true"
+        data-testid="amuse-skin-surface"
+        style="background-color: rgb(0, 0, 255); color: rgb(255, 255, 0);"
+      >
+        <div
+          class="flex h-fit w-full flex-col gap-2"
+        >
+          <div
+            class="flex h-full w-full justify-center"
+          >
+            <p
+              class="text-sm font-bold mr-4 flex h-[20px] max-w-8 justify-start"
+            >
+              00:00
+            </p>
+            <div
+              class="flex items-center transition-all duration-500"
+              data-hide-visualizer="false"
+              data-testid="amuse-visualizer"
+              style="opacity: 100%;"
+            >
+              <div
+                class="flex w-fit items-center gap-1 px-2"
+              >
+                <div
+                  class="flex flex-col items-center justify-center"
+                >
+                  <div
+                    class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-52.49999999999999% + 3px));"
+                  />
+                  <div
+                    class="h-1 w-1"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.0499999999999998);"
+                  />
+                  <div
+                    class="h-1 w-1 rounded-bl-full rounded-br-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(52.49999999999999% - 3px));"
+                  />
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center"
+                >
+                  <div
+                    class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-75% + 3px));"
+                  />
+                  <div
+                    class="h-1 w-1"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.5);"
+                  />
+                  <div
+                    class="h-1 w-1 rounded-bl-full rounded-br-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(75% - 3px));"
+                  />
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center"
+                >
+                  <div
+                    class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-89.99999999999999% + 3px));"
+                  />
+                  <div
+                    class="h-1 w-1"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.7999999999999998);"
+                  />
+                  <div
+                    class="h-1 w-1 rounded-bl-full rounded-br-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(89.99999999999999% - 3px));"
+                  />
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center"
+                >
+                  <div
+                    class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-75% + 3px));"
+                  />
+                  <div
+                    class="h-1 w-1"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.5);"
+                  />
+                  <div
+                    class="h-1 w-1 rounded-bl-full rounded-br-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(75% - 3px));"
+                  />
+                </div>
+                <div
+                  class="flex flex-col items-center justify-center"
+                >
+                  <div
+                    class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-52.49999999999999% + 3px));"
+                  />
+                  <div
+                    class="h-1 w-1"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.0499999999999998);"
+                  />
+                  <div
+                    class="h-1 w-1 rounded-bl-full rounded-br-full"
+                    style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(52.49999999999999% - 3px));"
+                  />
+                </div>
+              </div>
+            </div>
+            <p
+              class="text-sm font-bold ml-4 flex h-[20px] max-w-8 justify-end"
+            >
+              00:00
+            </p>
+          </div>
+          <div
+            class="bottom-0 z-50 h-2 w-full rounded-full transition-all duration-300 bg-spotify-black"
+            id="playbar"
+            style="background-color: rgb(0, 255, 0);"
+          >
+            <div
+              class="h-full w-0 min-w-[9px] rounded-full transition-all duration-1000 ease-linear"
+              id="active"
+              style="width: 0%; background-color: rgb(255, 0, 0); transition: width 1s, background-color 0.3s;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Compact skin (Nr) > matches the Nr snapshot 1`] = `
+<div
+  class="relative flex h-full w-full select-none items-center justify-center"
+  data-skin="compact"
+  data-testid="amuse-skin"
+  style="padding: 5%;"
+>
+  <div
+    style="transform: scale(1); transform-origin: center; perspective: 900px;"
+  >
+    <div
+      class="w-[405px] font-poppins"
+    >
+      <div
+        class="flex flex-col gap-2"
+      >
+        <div
+          class="flex h-28 w-full gap-2"
+        >
+          <div
+            class="relative aspect-square h-full"
+            data-cover="square"
+            data-testid="amuse-cover"
+          >
+            <div
+              class="relative h-full w-full transform-gpu"
+              style="transform-origin: center center;"
+            >
+              <div
+                class="relative z-50"
+              >
+                <div
+                  class="aspect-square h-full"
+                >
+                  <div
+                    class="relative h-full w-full"
+                  >
+                    <div
+                      class="relative flex aspect-square items-center justify-center overflow-hidden"
+                      data-testid="amuse-cover-art"
+                      style="border-radius: 0.5rem; -webkit-mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%); mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%);"
+                    >
+                      <div
+                        class="absolute inset-0"
+                        data-testid="amuse-cover-art-image"
+                        style="background-image: url("/assets/spotify_no_cover-DlW0D82t.svg"); background-size: cover; background-position: center center;"
+                      />
+                      <div
+                        class="relative flex h-full w-full scale-[101%] transform-gpu items-center justify-center overflow-hidden"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="absolute inset-0 overflow-hidden blur-md brightness-150"
+                data-cover-glow="false"
+                data-testid="amuse-cover-glow"
+                style="opacity: 0; border-radius: 0.5rem;"
+              >
+                <div
+                  class="absolute inset-0"
+                  data-testid="amuse-cover-glow-image"
+                  style="background-image: url("/assets/spotify_no_cover-DlW0D82t.svg"); background-position: center center; background-repeat: no-repeat; background-size: cover;"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="z-50 flex w-full min-w-0 flex-col gap-2"
+          >
+            <div
+              class="relative z-50 h-full transform-gpu overflow-clip rounded-lg transition-all duration-300 bg-spotify-black text-white flex flex-col justify-center px-3 py-1"
+              data-magic-colors="true"
+              data-testid="amuse-skin-surface"
+              style="background-color: rgb(0, 0, 255); color: rgb(255, 255, 0);"
+            >
+              <p
+                class="relative z-50 overflow-clip whitespace-nowrap text-lg font-bold mt-0.5"
+              >
+                <span
+                  style="animation-duration: 10s; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: alternate; animation-name: move;"
+                >
+                  Song X
+                </span>
+              </p>
+              <p
+                class="relative z-50 mb-1 overflow-clip text-ellipsis whitespace-nowrap text-sm"
+              >
+                Artist Y
+              </p>
+              <div
+                class="absolute -left-[50%] -top-[50%] h-[200%] w-[200%] transition-all duration-300"
+                data-cover-blur="false"
+                data-testid="amuse-cover-blur"
+                style="background-image: url("/assets/spotify_no_cover-DlW0D82t.svg"); background-position: center center; filter: blur(15px) brightness(80%) saturate(120%); opacity: 0%;"
+              />
+            </div>
+            <div
+              class="relative z-50 transform-gpu overflow-clip rounded-lg transition-all duration-300 bg-spotify-black text-white flex h-[72px] items-center justify-evenly"
+              data-magic-colors="true"
+              style="background-color: rgb(0, 0, 255); color: rgb(255, 255, 0);"
+            >
+              <p
+                class="text-sm font-bold w-10"
+              >
+                00:00
+              </p>
+              <div
+                class="flex items-center transition-all duration-500"
+                data-hide-visualizer="false"
+                data-testid="amuse-visualizer"
+                style="opacity: 100%;"
+              >
+                <div
+                  class="flex w-fit items-center gap-1 px-2"
+                >
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-52.49999999999999% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.0499999999999998);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(52.49999999999999% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-60.00000000000001% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.2000000000000002);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(60.00000000000001% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-67.5% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.35);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(67.5% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-75% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.5);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(75% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-82.5% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.6500000000000001);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(82.5% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-89.99999999999999% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.7999999999999998);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(89.99999999999999% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-97.50000000000001% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.9500000000000002);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(97.50000000000001% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-104.99999999999999% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 2.0999999999999996);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(104.99999999999999% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-112.5% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 2.25);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(112.5% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-120.00000000000001% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 2.4000000000000004);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(120.00000000000001% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-112.5% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 2.25);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(112.5% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-104.99999999999999% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 2.0999999999999996);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(104.99999999999999% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-97.50000000000001% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.9500000000000002);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(97.50000000000001% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-89.99999999999999% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.7999999999999998);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(89.99999999999999% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-82.5% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.6500000000000001);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(82.5% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-75% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.5);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(75% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-67.5% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.35);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(67.5% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-60.00000000000001% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.2000000000000002);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(60.00000000000001% - 3px));"
+                    />
+                  </div>
+                  <div
+                    class="flex flex-col items-center justify-center"
+                  >
+                    <div
+                      class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-52.49999999999999% + 3px));"
+                    />
+                    <div
+                      class="h-1 w-1"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.0499999999999998);"
+                    />
+                    <div
+                      class="h-1 w-1 rounded-bl-full rounded-br-full"
+                      style="background-color: rgb(255, 0, 0); transition: transform 1s, background-color 0.3s; transform: translateY(calc(52.49999999999999% - 3px));"
+                    />
+                  </div>
+                </div>
+              </div>
+              <p
+                class="text-sm font-bold flex w-10 justify-end"
+              >
+                00:00
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bottom-0 z-50 h-2 w-full rounded-full transition-all duration-300 bg-spotify-black"
+          id="playbar"
+          style="background-color: rgb(0, 255, 0);"
+        >
+          <div
+            class="h-full w-0 min-w-[9px] rounded-full transition-all duration-1000 ease-linear"
+            id="active"
+            style="width: 0%; background-color: rgb(255, 0, 0); transition: width 1s, background-color 0.3s;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

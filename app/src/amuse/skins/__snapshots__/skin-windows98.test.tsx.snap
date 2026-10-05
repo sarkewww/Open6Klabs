@@ -1,0 +1,119 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`skin-windows98 / structure > matches the Windows 98 window snapshot 1`] = `
+<div
+  class="window"
+  style="width: 300px;"
+>
+  <div
+    class="title-bar h-[18px]"
+    style="background: linear-gradient(90deg, rgb(83, 83, 83), rgb(255, 255, 255));"
+  >
+    <div
+      class="flex items-center justify-center gap-1"
+    >
+      <img
+        alt="Amuse icon"
+        class="h-3 w-3"
+        src="/assets/wm-3-B_9bguE5.png"
+        style="image-rendering: pixelated;"
+      />
+      <div
+        class="title-bar-text"
+      >
+        Amuse
+      </div>
+    </div>
+    <div
+      class="title-bar-controls"
+    >
+      <button
+        aria-label="Minimize"
+      />
+      <button
+        aria-label="Maximize"
+      />
+      <button
+        aria-label="Close"
+      />
+    </div>
+  </div>
+  <div
+    class="window-body flex gap-2"
+  >
+    <div
+      class="sunken-panel aspect-square h-fit w-fit shrink-0"
+    />
+    <div
+      class="grid w-full shrink grid-cols-1 px-2 py-1.5 text-black"
+    >
+      <div
+        class="relative w-full overflow-x-clip rounded"
+        id="songinfo"
+      >
+        <p
+          class="relative z-50 overflow-clip whitespace-nowrap font-bold mt-0 text-[12px] text-black"
+        >
+          <span
+            style="animation-duration: 10s; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: alternate; animation-name: move;"
+          >
+            Test Song
+          </span>
+        </p>
+        <p
+          class="relative z-50 mb-1 overflow-clip text-ellipsis whitespace-nowrap text-[11px]"
+        >
+          <span>
+            Test Artist
+          </span>
+        </p>
+        <div
+          class="absolute -left-[50%] -top-[50%] h-[200%] w-[200%]"
+        />
+      </div>
+      <div
+        class="flex flex-col items-center justify-end gap-1"
+        id="songtime"
+      >
+        <div
+          class="flex w-full flex-col"
+        >
+          <div
+            class="flex w-full items-center justify-between"
+          >
+            <p
+              class="flex w-16 justify-start text-[10px]"
+            >
+              00:30
+            </p>
+            <p
+              class="flex w-16 justify-end text-[10px]"
+            >
+              03:00
+            </p>
+          </div>
+        </div>
+        <div
+          class="sunken-panel relative h-fit w-full !overflow-visible bg-discord-dark"
+          id="playbar"
+          style="background-color: rgb(83, 83, 83);"
+        >
+          <div
+            class="h-2 w-0 min-w-[7px]"
+            id="active"
+            style="width: 16.666666666666664%; background-color: rgb(255, 255, 255);"
+          />
+          <div
+            class="relative -top-[13.1px] flex w-[100%]"
+          >
+            <div
+              class="window absolute h-[18px] w-[12px] bg-white ease-linear"
+              style="transform: translateX(-2px);"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

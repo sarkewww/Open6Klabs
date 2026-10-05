@@ -1,0 +1,306 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Discord skin / snapshot > matches the dark Discord skin snapshot 1`] = `
+<div>
+  <div
+    class="relative flex h-full w-full select-none items-center justify-center"
+    data-skin="discord"
+    data-testid="amuse-skin"
+    style="padding: 5%;"
+  >
+    <div
+      style="transform: scale(1); transform-origin: center; perspective: 900px;"
+    >
+      <div
+        class="transition-[width, background-color,outline] flex flex-col overflow-hidden rounded-2xl duration-300 font-poppins bg-discord-dark outline-osx-top-bg text-white outline outline-2 w-[420px]"
+        style="color: rgb(255, 255, 255); outline-offset: -2px;"
+      >
+        <div
+          class="flex h-10 w-full items-center justify-between p-3 pl-6 bg-discord-dark border-b-gray-800"
+        >
+          <svg
+            class="h-[15px] w-fit"
+            data-name="Isolation Mode"
+            fill="#949ba4"
+            id="Isolation_Mode"
+            viewBox="0 0 337.82 53.38"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="cls-1"
+              d="m0,2.95h27.3c6.58,0,12.15,1.03,16.7,3.08,4.19,1.76,7.75,4.75,10.21,8.58,2.3,3.78,3.48,8.14,3.4,12.56.05,4.44-1.17,8.81-3.53,12.58-2.63,3.98-6.38,7.09-10.79,8.92-4.83,2.2-10.81,3.3-17.95,3.29H0V2.95Zm25.06,36.54c4.43,0,7.84-1.11,10.22-3.32,2.44-2.37,3.74-5.67,3.57-9.07.15-3.15-1-6.22-3.18-8.5-2.13-2.12-5.34-3.18-9.63-3.19h-8.54v24.08h7.56Z"
+            />
+            <path
+              class="cls-1"
+              d="m98.49,51.88c-3.6-.9-7.05-2.34-10.22-4.27v-11.62c2.77,2.01,5.89,3.5,9.2,4.38,3.62,1.1,7.38,1.68,11.17,1.71,1.31.07,2.61-.16,3.82-.66.86-.44,1.29-1,1.29-1.58.02-.66-.23-1.29-.7-1.75-.8-.61-1.74-1.02-2.73-1.19l-8.4-1.89c-4.81-1.12-8.23-2.67-10.25-4.65-2.05-2.07-3.14-4.9-3-7.81-.03-2.61.92-5.13,2.66-7.07,2.07-2.19,4.68-3.79,7.56-4.65,3.71-1.17,7.59-1.72,11.48-1.65,3.63-.03,7.25.39,10.78,1.26,2.85.67,5.58,1.76,8.12,3.22v11c-2.38-1.38-4.94-2.43-7.6-3.11-2.89-.77-5.86-1.16-8.85-1.16-4.39,0-6.58.75-6.58,2.24-.01.68.38,1.3,1,1.58,1.2.51,2.45.87,3.74,1.08l7,1.26c4.55.8,7.94,2.2,10.17,4.2s3.35,4.93,3.36,8.78c.07,4.12-2.05,7.98-5.57,10.12-3.69,2.47-8.95,3.71-15.79,3.7-3.93,0-7.85-.49-11.66-1.47Z"
+            />
+            <path
+              class="cls-1"
+              d="m148.05,50.41c-3.74-1.72-6.9-4.5-9.07-8-2.03-3.43-3.07-7.36-3-11.34-.06-3.98,1.03-7.9,3.15-11.27,2.26-3.44,5.47-6.15,9.24-7.8,4.59-2,9.56-2.97,14.56-2.84,7,0,12.81,1.47,17.43,4.41v12.83c-1.76-1.18-3.68-2.1-5.7-2.73-2.26-.71-4.63-1.07-7-1.05-4.34,0-7.74.79-10.19,2.38-3.45,1.92-4.68,6.28-2.76,9.73.63,1.12,1.55,2.06,2.66,2.7,2.38,1.61,5.83,2.41,10.36,2.41,2.34,0,4.66-.33,6.9-1,2.04-.59,4-1.42,5.84-2.49v12.4c-5.41,3.15-11.59,4.75-17.85,4.62-5.02.14-10-.88-14.57-2.96Z"
+            />
+            <path
+              class="cls-1"
+              d="m197.79,50.41c-3.78-1.73-6.99-4.5-9.25-8-2.13-3.42-3.23-7.38-3.18-11.41-.07-3.98,1.04-7.89,3.18-11.25,2.27-3.41,5.46-6.09,9.21-7.74,9.2-3.73,19.5-3.73,28.7,0,3.73,1.63,6.91,4.31,9.17,7.7,2.13,3.37,3.22,7.29,3.15,11.27.05,4.02-1.04,7.98-3.15,11.41-2.23,3.5-5.43,6.28-9.2,8-9.14,3.92-19.49,3.92-28.63,0v.02Zm21.27-12.42c1.75-1.8,2.67-4.25,2.56-6.76.12-2.49-.81-4.91-2.56-6.68-1.9-1.74-4.43-2.64-7-2.49-2.57-.14-5.09.76-7,2.49-1.75,1.77-2.67,4.19-2.55,6.68-.11,2.51.81,4.95,2.55,6.76,1.89,1.76,4.42,2.69,7,2.55,2.58.15,5.12-.77,7-2.55Z"
+            />
+            <path
+              class="cls-1"
+              d="m280.84,11.75v15.14c-2.09-1.25-4.5-1.86-6.93-1.75-3.73,0-6.61,1.14-8.61,3.4s-3,5.77-3,10.53v12.88h-17.15V11h16.8v13c.93-4.76,2.44-8.27,4.52-10.53,2.04-2.25,4.96-3.49,8-3.4,2.24-.06,4.45.52,6.37,1.68Z"
+            />
+            <path
+              class="cls-1"
+              d="m337.82,1.55v50.4h-17.15v-9.2c-1.29,3.28-3.62,6.04-6.62,7.88-3.32,1.89-7.09,2.83-10.9,2.72-3.59.08-7.12-.9-10.15-2.83-2.93-1.9-5.27-4.6-6.74-7.77-1.61-3.5-2.41-7.32-2.34-11.17-.11-3.99.74-7.96,2.48-11.55,1.6-3.29,4.1-6.07,7.21-8,3.2-1.94,6.87-2.93,10.61-2.87,8.16,0,13.64,3.55,16.45,10.64V1.55h17.15Zm-19.67,36.2c1.77-1.74,2.72-4.14,2.63-6.62.08-2.4-.88-4.73-2.63-6.38-4.04-3.29-9.85-3.29-13.89,0-1.74,1.69-2.68,4.04-2.59,6.47-.09,2.45.86,4.82,2.62,6.53,1.86,1.73,4.33,2.63,6.86,2.51,2.58.14,5.1-.76,7-2.51Z"
+            />
+            <ellipse
+              class="cls-1"
+              cx="72.07"
+              cy="7.68"
+              rx="8.55"
+              ry="7.68"
+            />
+            <path
+              class="cls-1"
+              d="m63.51,20.65c5.47,2.3,11.64,2.3,17.11,0v31.52h-17.11v-31.52Z"
+            />
+          </svg>
+          <div
+            class="flex items-center transition-all duration-500"
+            data-hide-visualizer="false"
+            data-testid="amuse-visualizer"
+            style="opacity: 100%;"
+          >
+            <div
+              class="flex w-fit items-center gap-1 px-2"
+            >
+              <div
+                class="flex flex-col items-center justify-center"
+              >
+                <div
+                  class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-52.49999999999999% + 3px));"
+                />
+                <div
+                  class="h-1 w-1"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.0499999999999998);"
+                />
+                <div
+                  class="h-1 w-1 rounded-bl-full rounded-br-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(52.49999999999999% - 3px));"
+                />
+              </div>
+              <div
+                class="flex flex-col items-center justify-center"
+              >
+                <div
+                  class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-75% + 3px));"
+                />
+                <div
+                  class="h-1 w-1"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.5);"
+                />
+                <div
+                  class="h-1 w-1 rounded-bl-full rounded-br-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(75% - 3px));"
+                />
+              </div>
+              <div
+                class="flex flex-col items-center justify-center"
+              >
+                <div
+                  class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-89.99999999999999% + 3px));"
+                />
+                <div
+                  class="h-1 w-1"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.7999999999999998);"
+                />
+                <div
+                  class="h-1 w-1 rounded-bl-full rounded-br-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(89.99999999999999% - 3px));"
+                />
+              </div>
+              <div
+                class="flex flex-col items-center justify-center"
+              >
+                <div
+                  class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-75% + 3px));"
+                />
+                <div
+                  class="h-1 w-1"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.5);"
+                />
+                <div
+                  class="h-1 w-1 rounded-bl-full rounded-br-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(75% - 3px));"
+                />
+              </div>
+              <div
+                class="flex flex-col items-center justify-center"
+              >
+                <div
+                  class="h-1 w-1 rounded-tl-full rounded-tr-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(-52.49999999999999% + 3px));"
+                />
+                <div
+                  class="h-1 w-1"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: scale(1, 1.0499999999999998);"
+                />
+                <div
+                  class="h-1 w-1 rounded-bl-full rounded-br-full"
+                  style="background-color: rgb(255, 255, 255); transition: transform 1s, background-color 0.3s; transform: translateY(calc(52.49999999999999% - 3px));"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex items-end"
+        >
+          <div
+            class="relative flex flex-col"
+          >
+            <div
+              class="relative h-[90px] px-5 transition duration-1000"
+            >
+              <div
+                class="relative aspect-square h-full"
+                data-cover="square"
+                data-testid="amuse-cover"
+              >
+                <div
+                  class="relative h-full w-full transform-gpu"
+                  style="transform-origin: center center;"
+                >
+                  <div
+                    class="relative z-50"
+                  >
+                    <div
+                      class="aspect-square h-full"
+                    >
+                      <div
+                        class="relative h-full w-full"
+                      >
+                        <div
+                          class="relative flex aspect-square items-center justify-center overflow-hidden"
+                          data-testid="amuse-cover-art"
+                          style="border-radius: 0.5rem; -webkit-mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%); mask-image: radial-gradient(circle, transparent -0.5%, black -0.5%);"
+                        >
+                          <div
+                            class="absolute inset-0"
+                            data-testid="amuse-cover-art-image"
+                            style="background-image: url("/assets/square-CF5c1row.svg"); background-size: cover; background-position: center center;"
+                          />
+                          <div
+                            class="relative flex h-full w-full scale-[101%] transform-gpu items-center justify-center overflow-hidden"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="absolute inset-0 overflow-hidden blur-md brightness-150"
+                    data-cover-glow="false"
+                    data-testid="amuse-cover-glow"
+                    style="opacity: 0; border-radius: 0.5rem;"
+                  >
+                    <div
+                      class="absolute inset-0"
+                      data-testid="amuse-cover-glow-image"
+                      style="background-image: url("/assets/square-CF5c1row.svg"); background-position: center center; background-repeat: no-repeat; background-size: cover;"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="my-3 h-1 w-full px-10"
+            >
+              <div
+                class="h-full w-full rounded-full bg-discord-divider"
+              />
+            </div>
+            <div
+              class="absolute left-[2px] h-full w-full"
+            >
+              <div
+                class="relative h-full w-full overflow-clip"
+              >
+                <div
+                  class="absolute top-3 -left-[7px] h-16 w-3 rounded-full bg-white"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex w-full min-w-0 flex-col gap-2 px-5 py-6 bg-discord-light rounded-tl-xl"
+          >
+            <div
+              class="relative h-[48px] w-full overflow-x-clip rounded px-2"
+              id="songinfo"
+            >
+              <p
+                class="relative z-50 -mt-1 overflow-clip whitespace-nowrap drop-shadow-md text-lg font-bold false"
+              >
+                <span
+                  style="animation-duration: 10s; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: alternate; animation-name: move;"
+                >
+                  Song Title
+                </span>
+              </p>
+              <p
+                class="relative z-50 mb-1 overflow-clip text-ellipsis whitespace-nowrap text-sm"
+              >
+                <span>
+                  Artist Name
+                </span>
+              </p>
+              <div
+                class="absolute -top-[50%] -left-[50%] h-[200%] w-[200%] transition-all"
+              />
+            </div>
+            <div
+              class="flex h-[20px] w-full items-center justify-between gap-2 rounded px-2 text-sm font-bold"
+              id="songtime"
+            >
+              <div
+                class="flex w-full flex-col gap-1"
+              >
+                <div
+                  class="flex w-full items-center justify-between gap-2"
+                >
+                  <p
+                    class="flex w-20 justify-start"
+                    style="text-size-adjust: 80%;"
+                  >
+                    00:00
+                  </p>
+                  <div
+                    class="relative h-fit w-full rounded-full bg-discord-dark"
+                    id="playbar"
+                    style="background-color: rgb(83, 83, 83);"
+                  >
+                    <div
+                      class="h-2 w-0 min-w-[7px] rounded-full ease-linear"
+                      id="active"
+                      style="width: 25%; background-color: rgb(255, 255, 255); transition: width 1s, background-color 0.3s;"
+                    />
+                    <div
+                      class="relative -top-[16.6px] flex w-[100%]"
+                    />
+                  </div>
+                  <p
+                    class="flex w-20 justify-end"
+                  >
+                    03:20
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
